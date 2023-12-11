@@ -1,54 +1,53 @@
 // WATCH 
 
-let points = document.querySelector(".points");
+let marcadores = document.querySelector(".marcadores");
 j=12;
 k=24;
 
+ 
+for (var i = 0; i < 360; i += 6) {
+  
+  let marcador = document.createElement("span");
+  marcador.className = "marcador";
+  marcador.style.transform = `rotate(${i}deg) translateY(-150px)`;
+  marcadores.appendChild(marcador);
 
-for (var i = 0; i <360; i += 6){
-  let point = document.createElement("span");
-  point.className = "point";
-  point.style.transform = `rotate(${i}deg) translateY(-250px)`;
-  points.appendChild(point);
+  if ((i / 6) % 5 == 0) {
+    let textOutside = document.createElement('span');
+    marcador.className = "marcador big";
+    textOutside.className = "textOutside";
+    textOutside.innerHTML = j;
+    textOutside.style.transform = `rotate(${-i}deg) translateY(1px)`;
 
-  //new
-  let pontodentro =  document.createElement("span");
-  pontodentro.className = "point dentro";
-  pontodentro.style.transform = `rotate(${i}deg) translateY(-200px)`;
-  pontodentro.appendChild(point);
-
-
-  if ((i/6) % 5 == 0) {
-    let text = document.createElement('span');
-    point.className = "point big";
-    text.className = "text";
-    text.innerHTML = j;
-    text.style.transform = `rotate(${-i}deg) translateY(2px)`;
-
-    //new
-
-    let textodentro = documento.createElement('span');
-    pontodentro.className = 'dentro';
-    textodentro.innerHTML = k;
-    textodentro.style.transform = `rotate(${-i}deg) translateY(2px)`;
-
-    if(j == 12){
+    let textInside = document.createElement('span');
+    textInside.className = "textInside";
+    textInside.innerHTML = k;
+    textInside.style.transform = `rotate(${-i}deg) translateY(1px)`;
+    
+    
+    if (j == 12) {
       j = 0;
     }
-    j = j + 1;
-    point.appendChild(text);
 
-    if(k == 24){
-      k = 0;
+    j++;
+
+
+    if (k == 24) {
+      k = 12;
     }
-    k = k + 1;
-    pontodentro.appendChild(textodentro);
 
-  } 
-
+    k++;
+    
+    marcador.appendChild(textOutside); 
+    marcador.appendChild(textInside); 
   
+  }
+
 
 }
+
+console.log(marcadores);
+
 
 
 
