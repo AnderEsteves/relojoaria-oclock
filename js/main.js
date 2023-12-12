@@ -1,4 +1,5 @@
-// WATCH 
+
+// watch face
 
 let marcadores = document.querySelector(".marcadores");
 j=12;
@@ -47,6 +48,15 @@ for (var i = 0; i < 360; i += 6) {
 }
 
 console.log(marcadores);
+
+
+
+
+
+//watch hands
+
+
+
 
 
 
