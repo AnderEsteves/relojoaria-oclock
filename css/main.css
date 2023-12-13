@@ -21,7 +21,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(219, 219, 219);
+  background-color: rgb(255, 255, 255);
 }
 
 .clock{
@@ -41,8 +41,8 @@ body{
 }
 
 .marcador{
-  width: 2px;
-  height: 24px;
+  width: 1px;
+  height: 12px;
 
   display: block;
   border: 0.2mm solid blue;
@@ -57,8 +57,8 @@ body{
 
 
 .marcador.big{
-  width: 2px;
-  height: 24px;
+  width: 1px;
+  height: 14px;
 
   border: 0.3mm solid red;
   background: red;
@@ -71,7 +71,7 @@ body{
   position: absolute;
 
   top: 100%;
-  font-size: 3rem;
+  font-size: 30px;
   font-weight: 400;
 
   width: 40px;
@@ -81,7 +81,7 @@ body{
   text-align: center;
   overflow: hidden;
 
-  top: calc(-160% - 7px);
+  top: calc(-300% - 7px);
   left: calc(50% - 20px);
 
   letter-spacing: 0.2rem  ;
@@ -92,7 +92,7 @@ body{
   position: absolute;
 
   top: 100%;
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: 400;
 
   width: 40px;
@@ -110,14 +110,12 @@ body{
 }
 
 
-
-
  /* watch hands*/
 
 .seconds,
 .minutes,
 .hours{
-  width: 3px;
+  width: 2px;
   height: 155px;
   position: absolute;
 
@@ -128,13 +126,30 @@ body{
 }
 
 .seconds{
-  height: 168px;
+  height: 182px;
   transform-origin: 1px 26px;
   top: calc(50% - 26px);
   background: orange;
 
-  transform: rotate(30deg);
+  transform: rotate(180deg);
+
+  z-index: 1;
 }
+
+.hours{
+  height: 90px;
+  transform: rotate(180deg);
+ 
+  
+}
+
+.minutes{
+  height: 116px;
+  transform: rotate(360deg);
+  
+}
+
+
 
 .minutes,
 .hours{
@@ -156,24 +171,39 @@ body{
 }
 
 
-.pivot,
-.pivot::before{
+.pivot, .pivot::before{
   position: absolute;
   top: 50%;
   left: 50%;
 
   transform: translate(-50%, -50%);
-  width: 10px;
-  height: 10px;
+  width: 16px;
+  height: 16px;
 
-  background: black;
-  border: 3px solid burlywood;
+  /* background: red; */
+  /* border: 3px solid burlywood; */
+
   border-radius: 50%;
+
+  z-index: 1;
 }
 
 .pivot::before {
   content: "";
-  border: 3px solid orange;
+  /* border: 3px solid orange; */
   width: 5px;
   height: 5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

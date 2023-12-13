@@ -18,12 +18,12 @@ for (var i = 0; i < 360; i += 6) {
     marcador.className = "marcador big";
     textOutside.className = "textOutside";
     textOutside.innerHTML = j;
-    textOutside.style.transform = `rotate(${-i}deg) translateY(1px)`;
+    textOutside.style.transform = `rotate(${-i}deg) translateY(2px)`;
 
     let textInside = document.createElement('span');
     textInside.className = "textInside";
     textInside.innerHTML = k;
-    textInside.style.transform = `rotate(${-i}deg) translateY(1px)`;
+    textInside.style.transform = `rotate(${-i}deg) translateY(2px)`;
     
     
     if (j == 12) {
@@ -50,10 +50,44 @@ for (var i = 0; i < 360; i += 6) {
 console.log(marcadores);
 
 
+/* watch working */
 
 
 
-//watch hands
+const interval = setInterval (() => {
+  var date = new Date();
+
+  let secondsPoint = document.querySelector(".seconds");
+
+  let minutesPoint = document.querySelector(".minutes");
+
+  let hourPoint = document.querySelector(".hours");
+
+
+  let secPosition = date.getSeconds() * 6;
+
+  let minPosition = date.getMinutes() * 6;
+
+  let hourPosition = date.getHours() * 30;
+
+
+
+  // if (secPosition == 0){
+  //   secondsPoint.style.transform = "none";
+  // }else{
+  //   secondsPoint.style.transform = "0.25s";
+  // }
+
+  secondsPoint.style.transform = `rotate(${secPosition}deg)`;
+
+  minutesPoint.style.transform = `rotate(${minPosition - 180}deg)`;
+
+  hourPoint.style.transform = `rotate(${hourPosition - 180}deg)`;
+ 
+});
+
+
+
 
 
 
