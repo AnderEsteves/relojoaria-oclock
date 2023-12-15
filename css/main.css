@@ -129,7 +129,7 @@ body{
   height: 182px;
   transform-origin: 1px 26px;
   top: calc(50% - 26px);
-  background: orange;
+  background: red;
 
   transform: rotate(180deg);
 
@@ -198,12 +198,41 @@ body{
 
 
 
+.relogio-digital{
+  font-size: 3rem;
+}
+
+
+.seconds::before{
+  position: absolute;
+  content: "";
+
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  bottom: calc(50% - 6px);
+
+  align-items: center;
+  justify-content: center;
+
+  bottom: 20px;
+  background-color: aqua;
+}
 
 
 
+/* 
+  position: absolute;
+  content: "";
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%, 0);
 
-
-
-
+  width: 12px;
+  height: calc(100% - 22px);
+  background: black;
+  border-radius: 2mm; */
 
 

@@ -54,37 +54,53 @@ console.log(marcadores);
 
 
 
-const interval = setInterval (() => {
-  var date = new Date();
+// const interval = setInterval (() => {
+//   var date = new Date();
 
-  let secondsPoint = document.querySelector(".seconds");
+//   let secondsPoint = document.querySelector(".seconds");
 
-  let minutesPoint = document.querySelector(".minutes");
+//   let minutesPoint = document.querySelector(".minutes");
 
-  let hourPoint = document.querySelector(".hours");
-
-
-  let secPosition = date.getSeconds() * 6;
-
-  let minPosition = date.getMinutes() * 6;
-
-  let hourPosition = date.getHours() * 30;
+//   let hourPoint = document.querySelector(".hours");
 
 
+//   // let secPosition = date.getSeconds() * 6;
 
-  // if (secPosition == 0){
-  //   secondsPoint.style.transform = "none";
-  // }else{
-  //   secondsPoint.style.transform = "0.25s";
-  // }
+//   // let minPosition = date.getMinutes() * 6;
 
-  secondsPoint.style.transform = `rotate(${secPosition}deg)`;
+//   // let hourPosition = date.getHours() * 30;
 
-  minutesPoint.style.transform = `rotate(${minPosition - 180}deg)`;
 
-  hourPoint.style.transform = `rotate(${hourPosition - 180}deg)`;
+//   // let secPosition = date.getSeconds() * 6;
+
+//   let secPosition = (date.getSeconds() * 6); // Adiciona a fração de segundos para uma rotação mais suave + (date.getMilliseconds() * 0.006)
+
+//   let minPosition = (date.getMinutes() * 6) + (date.getSeconds() / 10); // Correção para o movimento dos minutos
+
+//   let hourPosition = date.getHours() * 30 + (date.getMinutes() / 2); // Ajuste para considerar a fração dos minutos
+
+
+
+//   // if (secPosition == 0){
+//   //   secondsPoint.style.transform = "none";
+//   // }else{
+//   //   secondsPoint.style.transform = "0.25s";
+//   // }
+
+
+//   secondsPoint.style.transform = `rotate(${secPosition}deg)`;
+
+//   minutesPoint.style.transform = `rotate(${minPosition - 180}deg)`;
+
+//   hourPoint.style.transform = `rotate(${hourPosition - 180}deg)`;
  
-});
+// });
+
+
+
+
+
+
 
 
 
