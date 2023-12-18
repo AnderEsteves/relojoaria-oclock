@@ -51,12 +51,17 @@ for (var i = 0; i < 360; i += 6) {
 console.log(marcadores);
 
 
+
+
 /* watch working */
 
+var date = new Date();
 
 
-const interval = setInterval (() => {
-  var date = new Date();
+setInterval (() => {
+
+  date = new Date();
+  
 
   let secondsPoint = document.querySelector(".seconds");
 
@@ -66,12 +71,11 @@ const interval = setInterval (() => {
 
 
 
-
-  let secPosition = (date.getSeconds() * 6); // + (date.getMilliseconds() * 0.006) transform-origin: bottom center; 
+  let secPosition = (date.getSeconds() * 6); 
   
   secPosition += 180; 
 
-  let minPosition = (date.getMinutes() * 6) ; 
+  let minPosition = (date.getMinutes() * 6); 
 
   let hourPosition = date.getHours() * 30 + (date.getMinutes() / 2) ; 
 
@@ -84,9 +88,13 @@ const interval = setInterval (() => {
 
 
   
-  console.log(secPosition);
+  // console.log(secPosition);
  
 },1000);
+
+
+
+
 
 
 
@@ -109,18 +117,6 @@ updateClock();
 
 
 
-// date
-
-// var data = new Date();
-
-// let dayString = data.toString();
-
-// console.log(dayString);
-
-// document.getElementById('date').textContent = dayString;
-
-
-const date = new Date();
 
 const options = { weekday: 'short' };
 const dayOfWeek = date.toLocaleDateString('en-US', options);
@@ -130,6 +126,41 @@ const combinedDate = `${dayOfWeek} ${dayOfMonth}`;
 
 document.getElementById('date').textContent = combinedDate;
 
+
+
+
+
+
+const alerta = function(){
+  console.log("olá");
+}
+
+console.log(alerta);
+
+
+
+
+const obj = {
+  carro: 'gol',
+
+  acao: function(){
+    console.log("carro andando ", this.carro);
+  },
+
+  freiar: () => {
+    console.log("carro parando", this.carro);
+  }
+}
+
+console.log(obj);
+
+
+
+
+
+setInterval(() => {
+  console.log("levando tiro");
+}, 1000);
 
 
 
