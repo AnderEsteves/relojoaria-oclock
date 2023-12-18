@@ -73,7 +73,7 @@ const interval = setInterval (() => {
 
   let minPosition = (date.getMinutes() * 6) ; 
 
- let hourPosition = date.getHours() * 30 + (date.getMinutes() / 2) ; 
+  let hourPosition = date.getHours() * 30 + (date.getMinutes() / 2) ; 
 
 
   secondsPoint.style.transform = `rotate(${secPosition}deg)`;
@@ -83,9 +83,10 @@ const interval = setInterval (() => {
   hourPoint.style.transform = `rotate(${hourPosition - 180}deg)`;
 
 
+  
   console.log(secPosition);
  
- },1000);
+},1000);
 
 
 
@@ -103,6 +104,39 @@ function updateClock() {
 setInterval(updateClock, 1000);
 
 updateClock();
+
+
+
+
+
+// date
+
+// var data = new Date();
+
+// let dayString = data.toString();
+
+// console.log(dayString);
+
+// document.getElementById('date').textContent = dayString;
+
+
+const date = new Date();
+
+const options = { weekday: 'short' };
+const dayOfWeek = date.toLocaleDateString('en-US', options);
+
+const dayOfMonth = date.getDate();
+const combinedDate = `${dayOfWeek} ${dayOfMonth}`;
+
+document.getElementById('date').textContent = combinedDate;
+
+
+
+
+
+
+
+
 
 
 

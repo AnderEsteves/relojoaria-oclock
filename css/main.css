@@ -222,3 +222,22 @@ body{
   font-size: 3rem;
   text-align: center;
 }
+
+
+
+
+
+/* date */
+
+
+#date{
+  position: absolute;
+  font-size: 3rem;
+  top: 45%;
+  left: 60%;
+
+  border: 1px solid rebeccapurple;
+  background-color: blueviolet;
+
+
+}
