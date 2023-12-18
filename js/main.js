@@ -2,8 +2,9 @@
 // watch face
 
 let marcadores = document.querySelector(".marcadores");
-j=12;
-k=24;
+k=12;
+// k=24;
+j=60;
 
  
 for (var i = 0; i < 360; i += 6) {
@@ -26,18 +27,18 @@ for (var i = 0; i < 360; i += 6) {
     textInside.style.transform = `rotate(${-i}deg) translateY(2px)`;
     
     
-    if (j == 12) {
-      j = 0;
-    }
-
-    j++;
-
-
-    if (k == 24) {
-      k = 12;
+    if (k == 12) {
+      k = 0;
     }
 
     k++;
+
+
+    if (j == 60) {
+      j = 0;
+    }
+
+    j+=5;
     
     marcador.appendChild(textOutside); 
     marcador.appendChild(textInside); 
@@ -54,47 +55,54 @@ console.log(marcadores);
 
 
 
-// const interval = setInterval (() => {
-//   var date = new Date();
+const interval = setInterval (() => {
+  var date = new Date();
 
-//   let secondsPoint = document.querySelector(".seconds");
+  let secondsPoint = document.querySelector(".seconds");
 
-//   let minutesPoint = document.querySelector(".minutes");
+  let minutesPoint = document.querySelector(".minutes");
 
-//   let hourPoint = document.querySelector(".hours");
-
-
-//   // let secPosition = date.getSeconds() * 6;
-
-//   // let minPosition = date.getMinutes() * 6;
-
-//   // let hourPosition = date.getHours() * 30;
-
-
-//   // let secPosition = date.getSeconds() * 6;
-
-//   let secPosition = (date.getSeconds() * 6); // Adiciona a fração de segundos para uma rotação mais suave + (date.getMilliseconds() * 0.006)
-
-//   let minPosition = (date.getMinutes() * 6) + (date.getSeconds() / 10); // Correção para o movimento dos minutos
-
-//   let hourPosition = date.getHours() * 30 + (date.getMinutes() / 2); // Ajuste para considerar a fração dos minutos
+  let hourPoint = document.querySelector(".hours");
 
 
 
-//   // if (secPosition == 0){
-//   //   secondsPoint.style.transform = "none";
-//   // }else{
-//   //   secondsPoint.style.transform = "0.25s";
-//   // }
+
+  let secPosition = (date.getSeconds() * 6); // + (date.getMilliseconds() * 0.006) transform-origin: bottom center; 
+  
+  secPosition += 180; 
+
+  let minPosition = (date.getMinutes() * 6) ; 
+
+ let hourPosition = date.getHours() * 30 + (date.getMinutes() / 2) ; 
 
 
-//   secondsPoint.style.transform = `rotate(${secPosition}deg)`;
+  secondsPoint.style.transform = `rotate(${secPosition}deg)`;
 
-//   minutesPoint.style.transform = `rotate(${minPosition - 180}deg)`;
+  minutesPoint.style.transform = `rotate(${minPosition - 180}deg)`;
 
-//   hourPoint.style.transform = `rotate(${hourPosition - 180}deg)`;
+  hourPoint.style.transform = `rotate(${hourPosition - 180}deg)`;
+
+
+  console.log(secPosition);
  
-// });
+ },1000);
+
+
+
+
+function updateClock() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  const time = `${hours}:${minutes}:${seconds}`;
+
+  document.getElementById('digital-clock').textContent = time;
+}
+
+setInterval(updateClock, 1000);
+
+updateClock();
 
 
 

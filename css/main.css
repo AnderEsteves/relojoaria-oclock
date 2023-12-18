@@ -28,7 +28,24 @@ body{
   width: 400px;
   height: 400px;
   position: relative;
+
+
+  
+
 }
+
+
+/* .seconds{
+  position: absolute;
+  border: 1px solid red;
+  width: 4px;
+  height: 240px;
+
+  top: 50%;
+  left: calc(50% - 1px);
+ 
+
+} */
 
 
  /* watch face */
@@ -110,7 +127,10 @@ body{
 }
 
 
- /* watch hands*/
+
+
+/* watch hands*/
+
 
 .seconds,
 .minutes,
@@ -123,38 +143,39 @@ body{
   left: calc(50% - 1px);
   border-radius: 0.6mm;
   transform-origin: 1px 0;
-}
+} 
 
 .seconds{
+ 
   height: 182px;
-  transform-origin: 1px 26px;
+  transform-origin: 1px 26px; 
   top: calc(50% - 26px);
+
   background: red;
-
-  transform: rotate(180deg);
-
   z-index: 1;
+  
 }
+
+
 
 .hours{
   height: 90px;
-  transform: rotate(180deg);
- 
-  
+  /* transform: rotate(180deg); */
 }
+
 
 .minutes{
   height: 116px;
-  transform: rotate(360deg);
+  /* transform: rotate(360deg); */
   
 }
-
-
 
 .minutes,
 .hours{
   background: black;
 }
+
+
 
 .minutes::before,
 .hours::before {
@@ -167,7 +188,7 @@ body{
   width: 12px;
   height: calc(100% - 22px);
   background: black;
-  border-radius: 2mm;
+  border-radius: 2rem;
 }
 
 
@@ -180,8 +201,8 @@ body{
   width: 16px;
   height: 16px;
 
-  /* background: red; */
-  /* border: 3px solid burlywood; */
+  background: red;
+  
 
   border-radius: 50%;
 
@@ -190,49 +211,14 @@ body{
 
 .pivot::before {
   content: "";
-  /* border: 3px solid orange; */
+  border: 3px solid red;
   width: 5px;
   height: 5px;
 }
 
 
 
-
-.relogio-digital{
+#digital-clock {
   font-size: 3rem;
+  text-align: center;
 }
-
-
-.seconds::before{
-  position: absolute;
-  content: "";
-
-  width: 10px;
-  height: 10px;
-
-  border-radius: 50%;
-
-  bottom: calc(50% - 6px);
-
-  align-items: center;
-  justify-content: center;
-
-  bottom: 20px;
-  background-color: aqua;
-}
-
-
-
-/* 
-  position: absolute;
-  content: "";
-  bottom: -3px;
-  left: 50%;
-  transform: translate(-50%, 0);
-
-  width: 12px;
-  height: calc(100% - 22px);
-  background: black;
-  border-radius: 2mm; */
-
-
