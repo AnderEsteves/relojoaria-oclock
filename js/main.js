@@ -3,7 +3,6 @@
 
 let marcadores = document.querySelector(".marcadores");
 k=12;
-// k=24;
 j=60;
 
  
@@ -48,7 +47,7 @@ for (var i = 0; i < 360; i += 6) {
 
 }
 
-console.log(marcadores);
+
 
 
 
@@ -99,21 +98,19 @@ setInterval (() => {
 
 
 
-function updateClock() {
-  const now = new Date();
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const seconds = String(now.getSeconds()).padStart(2, '0');
-  const time = `${hours}:${minutes}:${seconds}`;
+// function updateClock() {
+//   const now = new Date();
+//   const hours = String(now.getHours()).padStart(2, '0');
+//   const minutes = String(now.getMinutes()).padStart(2, '0');
+//   const seconds = String(now.getSeconds()).padStart(2, '0');
+//   const time = `${hours}:${minutes}:${seconds}`;
 
-  document.getElementById('digital-clock').textContent = time;
-}
+//   document.getElementById('digital-clock').textContent = time;
+// }
 
-setInterval(updateClock, 1000);
+// setInterval(updateClock, 1000);
 
-updateClock();
-
-
+// updateClock();
 
 
 
@@ -130,37 +127,61 @@ document.getElementById('date').textContent = combinedDate;
 
 
 
+let marcadoresCrono = document.querySelector(".marcadoresCrono");
+a=12;
+b=60;
 
-const alerta = function(){
-  console.log("olá");
-}
+ 
+for (var i = 0; i < 360; i += 6) {
+  
+  let marcador = document.createElement("span");
+  marcador.className = "marcador";
+  marcador.style.transform = `rotate(${i}deg) translateY(-150px)`;
+  marcadoresCrono.appendChild(marcador);
 
-console.log(alerta);
+  if ((i / 6) % 5 == 0) {
+    let textOutside = document.createElement('span');
+    marcador.className = "marcador big";
+    textOutside.className = "textOutside";
+    textOutside.innerHTML = b;
+    textOutside.style.transform = `rotate(${-i}deg) translateY(2px)`;
+
+    let textInside = document.createElement('span');
+    textInside.className = "textInside";
+    textInside.innerHTML = a;
+    textInside.style.transform = `rotate(${-i}deg) translateY(2px)`;
+    
+    
+    if (a == 12) {
+      a = 0;
+    }
+
+    a++;
 
 
+    if (b == 60) {
+      b = 0;
+    }
 
-
-const obj = {
-  carro: 'gol',
-
-  acao: function(){
-    console.log("carro andando ", this.carro);
-  },
-
-  freiar: () => {
-    console.log("carro parando", this.carro);
+    b+=5;
+    
+    marcador.appendChild(textOutside); 
+    marcador.appendChild(textInside); 
+  
   }
+
+
 }
 
-console.log(obj);
 
 
 
 
 
-setInterval(() => {
-  console.log("levando tiro");
-}, 1000);
+
+
+
+
 
 
 
