@@ -9,7 +9,7 @@ html{
 }
 
 body{
-  background-color: aqua;
+  /* background-color: aqua; */
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -20,14 +20,18 @@ body{
   
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   background-color: rgb(255, 255, 255);
+
+  border: 1px solid red;
 }
 
 .clock{
   width: 400px;
   height: 400px;
   position: relative;
+
+  border: 1px solid green;
 }
 
 
@@ -239,10 +243,29 @@ body{
 
 
 
+
+.centerCrono{
+  width: 100%;
+  height: 100vh;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(255, 255, 255);
+
+  border: 1px solid red;
+}
+
+
 .cronografo{
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   position: relative;
+
+  border: 1px solid orange;
+  border-radius: 50%;
+
+
 }
 
 
@@ -253,7 +276,7 @@ body{
 }
 
 
-.marcadorCrono{
+/* .marcadorCrono{
   width: 1px;
   height: 12px;
 
@@ -265,4 +288,44 @@ body{
   position: absolute;
   top: calc(50% - 6px);
   left: calc(50% - 0.3mm);
+} */
+
+
+/* .marcadorCrono {
+  width: 6px; 
+  height: 26px; 
+  display: block;
+  border: 2px solid blue; 
+  background: blue;
+  border-radius: 10%; 
+  position: absolute;
+  top: calc(50% - 3px); 
+  left: calc(50% - 3px); 
+} */
+
+.marcadorCrono {
+  width: 10px; /* Largura do marcador */
+  height: 10px; /* Altura do marcador */
+  display: block;
+  border: 2px solid blue; /* Espessura do traço do marcador */
+  background: red;
+
+  position: absolute;
+
+
+  top: 50%; /* Posição vertical no centro */
+  left: 50%; /* Posição horizontal no centro */
+  transform-origin: center; /* Define o ponto de transformação no centro */
+  transform: translate(8%, 8%); /* Move o elemento para o centro */
+}
+
+
+.marcadorCrono.big{
+  width: 1px;
+  height: 14px;
+
+  border: 0.3mm solid red;
+  background: red;
+  top: calc(50% - 7px);
+  left: calc(50% - 0.2mm);
 }

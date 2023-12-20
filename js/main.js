@@ -10,7 +10,7 @@ for (var i = 0; i < 360; i += 6) {
   
   let marcador = document.createElement("span");
   marcador.className = "marcador";
-  marcador.style.transform = `rotate(${i}deg) translateY(-150px)`;
+  marcador.style.transform = `rotate(${i}deg) translateY(-150px)`; //tamaho do relógio
   marcadores.appendChild(marcador);
 
   if ((i / 6) % 5 == 0) {
@@ -127,56 +127,60 @@ document.getElementById('date').textContent = combinedDate;
 
 
 
-let marcadoresCrono = document.querySelector(".marcadoresCrono");
-a=12;
-b=60;
+let marcadoresCrono = document.querySelector(".cronografo");
 
- 
 for (var i = 0; i < 360; i += 6) {
-  
-  let marcador = document.createElement("span");
-  marcador.className = "marcador";
-  marcador.style.transform = `rotate(${i}deg) translateY(-150px)`;
-  marcadoresCrono.appendChild(marcador);
-
-  if ((i / 6) % 5 == 0) {
-    let textOutside = document.createElement('span');
-    marcador.className = "marcador big";
-    textOutside.className = "textOutside";
-    textOutside.innerHTML = b;
-    textOutside.style.transform = `rotate(${-i}deg) translateY(2px)`;
-
-    let textInside = document.createElement('span');
-    textInside.className = "textInside";
-    textInside.innerHTML = a;
-    textInside.style.transform = `rotate(${-i}deg) translateY(2px)`;
-    
-    
-    if (a == 12) {
-      a = 0;
-    }
-
-    a++;
-
-
-    if (b == 60) {
-      b = 0;
-    }
-
-    b+=5;
-    
-    marcador.appendChild(textOutside); 
-    marcador.appendChild(textInside); 
-  
-  }
-
-
+  let marcadorCrono = document.createElement("span");
+  marcadorCrono.className = "marcadorCrono";
+  marcadorCrono.style.transform = `rotate(${i}deg) translateY(-250px)`;
+  marcadoresCrono.appendChild(marcadorCrono);
 }
 
 
 
 
 
+// let marcadores = document.querySelector(".marcadores");
+// k=12;
+// j=60;
+
+// for (var i = 0; i < 360; i += 6) {
+  
+//   let marcador = document.createElement("span");
+//   marcador.className = "marcador";
+//   marcador.style.transform = `rotate(${i}deg) translateY(-150px)`;
+//   marcadores.appendChild(marcador);
+
+//   if ((i / 6) % 5 == 0) {
+//     let textOutside = document.createElement('span');
+//     marcador.className = "marcador big";
+//     textOutside.className = "textOutside";
+//     textOutside.innerHTML = j;
+//     textOutside.style.transform = `rotate(${-i}deg) translateY(2px)`;
+
+//     let textInside = document.createElement('span');
+//     textInside.className = "textInside";
+//     textInside.innerHTML = k;
+//     textInside.style.transform = `rotate(${-i}deg) translateY(2px)`;
+    
+    
+//     if (k == 12) {
+//       k = 0;
+//     }
+
+//     k++;
+
+
+//     if (j == 60) {
+//       j = 0;
+//     }
+
+//     j+=5;
+    
+//     marcador.appendChild(textOutside); 
+//     marcador.appendChild(textInside); 
+  
+//   }
 
 
 
