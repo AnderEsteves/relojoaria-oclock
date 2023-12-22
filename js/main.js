@@ -10,29 +10,29 @@ for (var i = 0; i < 360; i += 6) {
   
   let marcador = document.createElement("span");
   marcador.className = "marcador";
-  marcador.style.transform = `rotate(${i}deg) translateY(-150px)`; //tamaho do relógio
+  marcador.style.transform = `rotate(${i}deg) translateY(-250px)`; //tamaho do relógio
   marcadores.appendChild(marcador);
 
   if ((i / 6) % 5 == 0) {
     let textOutside = document.createElement('span');
     marcador.className = "marcador big";
     textOutside.className = "textOutside";
-    textOutside.innerHTML = j;
+    textOutside.innerHTML = k;
     textOutside.style.transform = `rotate(${-i}deg) translateY(2px)`;
 
     let textInside = document.createElement('span');
     textInside.className = "textInside";
-    textInside.innerHTML = k;
+    textInside.innerHTML = j;
     textInside.style.transform = `rotate(${-i}deg) translateY(2px)`;
     
-    
+    //textInside
     if (k == 12) {
       k = 0;
     }
 
     k++;
 
-
+    //textOutside
     if (j == 60) {
       j = 0;
     }
@@ -70,11 +70,11 @@ setInterval (() => {
 
 
 
-  let secPosition = (date.getSeconds() * 6); 
+  let secPosition = (date.getSeconds() * 6 + 180); 
   
-  secPosition += 180; 
+  // secPosition += 180; 
 
-  let minPosition = (date.getMinutes() * 6); 
+  let minPosition = (date.getMinutes() * 6) + (date.getSeconds() / 10);
 
   let hourPosition = date.getHours() * 30 + (date.getMinutes() / 2) ; 
 
@@ -90,7 +90,6 @@ setInterval (() => {
   // console.log(secPosition);
  
 },1000);
-
 
 
 
