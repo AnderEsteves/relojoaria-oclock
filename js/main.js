@@ -1,4 +1,107 @@
 
+let modeChanged = false;
+let intervalId; // Variável para armazenar o ID do intervalo
+
+// Função para atualizar o relógio
+function updateClock() {
+  date = new Date();
+
+  let secondsPoint = document.querySelector(".seconds");
+  let minutesPoint = document.querySelector(".minutes");
+  let hourPoint = document.querySelector(".hours");
+
+  let secPosition = date.getSeconds() * 6 + 180;
+  let minPosition = date.getMinutes() * 6 + date.getSeconds() / 10;
+  let hourPosition = date.getHours() * 30 + date.getMinutes() / 2;
+
+  secondsPoint.style.transform = `rotate(${secPosition}deg)`;
+  minutesPoint.style.transform = `rotate(${minPosition - 180}deg)`;
+  hourPoint.style.transform = `rotate(${hourPosition - 180}deg)`;
+
+  const options = { weekday: 'short' };
+  const dayOfWeek = date.toLocaleDateString('en-US', options);
+  const dayOfMonth = date.getDate();
+  const combinedDate = `${dayOfWeek} | ${dayOfMonth}`;
+  document.getElementById('date').textContent = combinedDate;
+}
+
+// Iniciar o relógio
+intervalIdClock = setInterval(updateClock, 1000);
+
+function changeMode() {
+
+ // Pausar o relógio se o modo mudou para true
+ if (modeChanged) {
+  clearInterval(intervalId); // Limpa o intervalo para pausar o relógio
+} else {
+  // Retomar o relógio se o modo mudou para false
+  intervalId = setInterval(() => {
+    // Código para atualizar o relógio
+    date = new Date();
+
+    let secondsPoint = document.querySelector(".seconds");
+    let minutesPoint = document.querySelector(".minutes");
+    let hourPoint = document.querySelector(".hours");
+
+    let secPosition = date.getSeconds() * 6 + 180;
+    let minPosition = date.getMinutes() * 6 + date.getSeconds() / 10;
+    let hourPosition = date.getHours() * 30 + date.getMinutes() / 2;
+
+    secondsPoint.style.transform = `rotate(${secPosition}deg)`;
+    minutesPoint.style.transform = `rotate(${minPosition - 180}deg)`;
+    hourPoint.style.transform = `rotate(${hourPosition - 180}deg)`;
+
+    // Atualizar o relógio com a data
+    const options = { weekday: 'short' };
+    const dayOfWeek = date.toLocaleDateString('en-US', options);
+    const dayOfMonth = date.getDate();
+    const combinedDate = `${dayOfWeek} | ${dayOfMonth}`;
+    document.getElementById('date').textContent = combinedDate;
+  }, 1000); // Define o intervalo para atualizar o relógio a cada segundo
+}
+
+
+
+
+
+
+
+  // text Inside
+  let textInside = document.querySelectorAll(".textInside");
+
+  textInside.forEach(text => {
+    text.style.display = modeChanged ? "block" : "none";
+  });
+
+
+  // date
+  let date = document.querySelectorAll(".data");
+
+  date.forEach(text => {
+    text.style.display = modeChanged ? "block" : "none";
+  })
+
+  
+  // hour hand
+  let hours = document.querySelectorAll(".hours");
+
+  hours.forEach(text => {
+    text.style.display = modeChanged ? "block" : "none";
+  })
+
+
+
+
+  modeChanged = !modeChanged ;
+  // Outras modificações de elementos do relógio conforme necessário
+
+
+}
+
+
+
+
+
 // watch face
 
 let marcadores = document.querySelector(".marcadores");
@@ -53,7 +156,7 @@ for (var i = 0; i < 360; i += 6) {
 var date = new Date();
 
 
-setInterval (() => {
+intervalId = setInterval (() => {
 
   date = new Date();
   
@@ -90,7 +193,7 @@ setInterval (() => {
 
 
 
-
+/* date clock */
 
 const options = { weekday: 'short' };
 const dayOfWeek = date.toLocaleDateString('en-US', options);

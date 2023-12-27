@@ -14,22 +14,45 @@ body{
 }
 
 
+
 .center{
   width: 100%;
-  height: 100vh;
+  height: 100vh;  
   
   display: flex;
-  align-items: center;
+  flex-direction: row;
+
   justify-content: space-around;
   background-color: rgb(255, 255, 255);
 
-  border: 1px solid red;
+  border: 4px solid red;
+}
+
+.menuClock{
+  width: 50%;
+  height: 50%;
+  border: 4px solid pink;
+
+  position: relative;
+
+  top: 28%;
+}
+
+.clockContainer{
+  /* border: 4px solid orange; */
+  position: relative;
 }
 
 .clock{
   width: 400px;
   height: 400px;
-  position: absolute;
+  position: relative;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* border: 4px solid green; */
 }
 
 
@@ -210,6 +233,7 @@ body{
 .hours{
   height: 158px;
   /* transform: rotate(180deg); */
+  z-index: 1;
 }
 
 
@@ -292,6 +316,7 @@ body{
   padding: 1rem;
   white-space: nowrap;
   
+  z-index: 0;
 }
 
 

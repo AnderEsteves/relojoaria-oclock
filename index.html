@@ -7,41 +7,43 @@
   <script defer src="./js/main.js"></script>
   <title>Relojoaria O'clock</title>
 </head>
-<body>  
-  <h1 id="digital-clock"></h1>
+<body>
+  <header></header>  
+  
 
   <section class="center">
-  
-    <div class="clock">
-      <div class="circuloInside"></div>
-      <div class="circuloOutside"></div>
 
-
-      <div class="minutes"></div>
-      <div class="seconds"></div>
-      <div class="hours"></div>
-      <div class="pivot"></div>
-      <div class="marcadores"></div>
-
-      <div class="data">
-        <div id="date"></div>
-      </div>  
-      
-      
+    <div class="menuClock">
+      <button onclick="changeMode()"><a>Botão Mode</a></button>
     </div>
+  
+    <div class="clockContainer">
+      <div class="clock">
+        <div class="circuloInside"></div>
+        <div class="circuloOutside"></div>
+  
+  
+        <div class="minutes"></div>
+        <div class="seconds"></div>
+        <div class="hours"></div>
+        <div class="pivot"></div>
+        <div class="marcadores"></div>
+  
+        <div class="data">
+          <div id="date"></div>
+        </div>  
+      </div>
+    </div>
+    
   </section>
 
-  <section class="centerCrono">
+  <!-- <section class="centerCrono">
 
     <div class="cronografo">
       <div class="secCrono"></div>
       <div class="minCrono"></div>
       <div class="marcadorCrono"></div>
     </div>
-  </section>
-
-
-    
-  
+  </section> -->
 </body>
 </html>
