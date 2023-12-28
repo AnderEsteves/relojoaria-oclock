@@ -123,9 +123,11 @@ function changeMode() {
   //Verifica se o relógio está em execução para parar ou iniciar conforme necessário
   if (modeChanged) {
     startClock(); 
+    modeButton.innerHTML = "Modo cronógrafo";
   } else {
     stopClock();
     resetSecondAndMinuteHands();
+    modeButton.innerHTML = "Modo relógio";
   }
   
  // Reinicia os ponteiros de segundo e minuto se o modo for alterado
