@@ -192,10 +192,6 @@ body{
 
 
 
-
-
-
-
 /* watch hands*/
 
 
@@ -210,6 +206,8 @@ body{
   left: calc(50% - 1px);
   border-radius: 0.6mm;
   transform-origin: 1px 0;
+
+  
 } 
 
 .seconds{
@@ -223,7 +221,7 @@ body{
   background: red;
   z-index: 1;
 
-
+  
 }
 
 
