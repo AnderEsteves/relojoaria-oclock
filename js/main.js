@@ -2,6 +2,58 @@
 let modeChanged = false;
 let intervalId; // Armazena o ID do intervalo do relógio
 
+// cronografo
+let intervalIdChrono;
+let seconds = 0;
+let minutes = 0;
+
+
+
+function startChronograph() {
+  intervalIdChrono = setInterval(() => {
+    let secondsPoint = document.querySelector(".seconds");
+    let minutesPoint = document.querySelector(".minutes");
+
+    seconds++;
+
+    let secPosition = (seconds * 6 + 180); 
+    secondsPoint.style.transform = `rotate(${secPosition}deg)`;
+
+    if (seconds === 60) {
+      seconds = 0;
+      minutes++;
+      let minPosition = (minutes * 6) + (seconds / 10) - 180;
+      minutesPoint.style.transform = `rotate(${minPosition}deg)`;
+    }
+  }, 1000);
+
+}
+
+
+function stopChronograph() {
+  clearInterval(intervalIdChrono);
+}
+
+
+function resetChronograph() {
+  clearInterval(intervalIdChrono);
+
+  let secondsPoint = document.querySelector(".seconds");
+  let minutesPoint = document.querySelector(".minutes");
+
+  // Zera os segundos e minutos
+  seconds = 0;
+  minutes = 0;
+
+  // Define a rotação dos ponteiros de segundos e minutos para 0 graus
+  secondsPoint.style.transform = "rotate(180deg)";
+  minutesPoint.style.transform = "rotate(-180deg)";
+}
+
+
+
+
+
 
 
 
@@ -87,6 +139,7 @@ function changeMode() {
   //start and stop buttons
   const startButton = document.getElementById('start');
   const stopButton = document.getElementById('stop');
+  const resetButton = document.getElementById('reset');
 
 
   //text Inside
@@ -110,6 +163,9 @@ function changeMode() {
     text.style.display = modeChanged ? "block" : "none";
   })
 
+ 
+
+
 
   //Verifica se o relógio está em execução para parar ou iniciar conforme necessário
   if (modeChanged) {
@@ -118,6 +174,11 @@ function changeMode() {
 
     startButton.style.display = "none"; 
     stopButton.style.display = "none"; 
+    resetButton.style.display = "none"; 
+    
+    //parar e zerar crono
+    stopChronograph(); 
+    resetChronograph();
 
   } else {
     stopClock();
@@ -126,6 +187,7 @@ function changeMode() {
 
     startButton.style.display = "block"; 
     stopButton.style.display = "block"; 
+    resetButton.style.display = "block"; 
   }
   
  //Reinicia os ponteiros de segundo e minuto se o modo for alterado
