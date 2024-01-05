@@ -1,7 +1,7 @@
 
 let modeChanged = false;
 let intervalId; // Armazena o ID do intervalo do relógio
-let transitionInProgress = false;
+
 
 
 
@@ -35,6 +35,8 @@ function startClock() {
 
 function stopClock() {
   clearInterval(intervalId);
+
+
 }
 
 
@@ -82,26 +84,17 @@ function resetSecondAndMinuteHands() {
 
 
 function changeMode() {
-  let dateElements = document.querySelectorAll(".data");
-  let hourElements = document.querySelectorAll(".hours");
-
-  dateElements.forEach(text => {
-    text.style.display = modeChanged ? "block" : "none";
-  });
-
-  hourElements.forEach(text => {
-    text.style.display = modeChanged ? "block" : "none";
-  });
+  //start and stop buttons
+  const startButton = document.getElementById('start');
+  const stopButton = document.getElementById('stop');
 
 
-
-  // text Inside
+  //text Inside
   let textInside = document.querySelectorAll(".textInside");
 
   textInside.forEach(text => {
     text.style.display = modeChanged ? "block" : "none";
   });
-
 
   // date
   let date = document.querySelectorAll(".data");
@@ -110,7 +103,6 @@ function changeMode() {
     text.style.display = modeChanged ? "block" : "none";
   })
 
-  
   // hour hand
   let hours = document.querySelectorAll(".hours");
 
@@ -118,27 +110,31 @@ function changeMode() {
     text.style.display = modeChanged ? "block" : "none";
   })
 
- 
 
   //Verifica se o relógio está em execução para parar ou iniciar conforme necessário
   if (modeChanged) {
     startClock(); 
     modeButton.innerHTML = "Modo cronógrafo";
+
+    startButton.style.display = "none"; 
+    stopButton.style.display = "none"; 
+
   } else {
     stopClock();
     resetSecondAndMinuteHands();
     modeButton.innerHTML = "Modo relógio";
+
+    startButton.style.display = "block"; 
+    stopButton.style.display = "block"; 
   }
   
- // Reinicia os ponteiros de segundo e minuto se o modo for alterado
+ //Reinicia os ponteiros de segundo e minuto se o modo for alterado
   // if (!modeChanged) {
   //   resetSecondAndMinuteHands();
   // }
 
-
-
   modeChanged = !modeChanged ;
-  // Outras modificações de elementos do relógio conforme necessário
+ 
 }
 
 
