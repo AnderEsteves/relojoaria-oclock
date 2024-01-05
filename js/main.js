@@ -239,7 +239,10 @@ const options = { weekday: 'short' };
 const dayOfWeek = date.toLocaleDateString('en-US', options);
 
 const dayOfMonth = date.getDate();
-const combinedDate = `${dayOfWeek} | ${dayOfMonth}`;
+
+const dayOfMonthFormatted = (dayOfMonth < 10) ? `0${dayOfMonth}` : dayOfMonth;
+
+const combinedDate = `${dayOfWeek} | ${dayOfMonthFormatted}`;
 
 document.getElementById('date').textContent = combinedDate;
 
