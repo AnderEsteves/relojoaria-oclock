@@ -1,19 +1,15 @@
 const engine = {
   date: new Date(),
-
   modeChanged: false,
-  intervalId: null, // Armazena o ID do intervalo do relógio
+  intervalIdClock: null, // Armazena o ID do intervalo do relógio
+  intervalIdChrono: null,
+  seconds: 0,
+  minutes: 0,
+  secPosition: 0,
 
   secondHand: document.querySelector(".seconds"),
   minuteHand: document.querySelector(".minutes"),
   hourHand: document.querySelector(".hours"),
-
-  // cronografo
-  intervalIdChrono: null,
-  seconds: 0,
-  minutes: 0,
-
-  secPosition: 0,
 
   createMarcadores: function () {
     let marcadores = document.querySelector(".marcadores");
@@ -59,10 +55,8 @@ const engine = {
   },
 
   startClock: function () {
-    this.intervalId = setInterval(() => {
-      // Lógica do relógio aqui
+    this.intervalIdClock = setInterval(() => {
       date = new Date();
-      // ... Seu código para atualizar o relógio
 
       let secPosition = date.getSeconds() * 6 + 180;
       let minPosition = date.getMinutes() * 6 + date.getSeconds() / 10;
@@ -75,7 +69,7 @@ const engine = {
   },
 
   stopClock: function () {
-    clearInterval(this.intervalId);
+    clearInterval(this.intervalIdClock);
   },
 
   resetSecondAndMinuteHands: function () {
@@ -153,7 +147,7 @@ const engine = {
 
     // date
     let date = document.querySelectorAll(".data");
-
+  
     date.forEach((text) => {
       text.style.display = this.modeChanged ? "block" : "none";
     });
@@ -177,12 +171,9 @@ const engine = {
       //parar e zerar crono
       this.stopChronograph();
       this.resetChronograph();
-
-      // alert("agora");
     } else {
       this.stopClock();
       this.resetSecondAndMinuteHands();
-
       this.changetextInside();
 
       modeButton.innerHTML = "Modo relógio";
@@ -191,7 +182,6 @@ const engine = {
       stopButton.style.display = "block";
       resetButton.style.display = "block";
     }
-
 
     this.modeChanged = !this.modeChanged;
   },

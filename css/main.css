@@ -320,17 +320,9 @@ body{
 }
 
 
-#date{
-  /* position: absolute;
-  font-size: 4rem;  
-  top: 41%;
-  left: 65%;    */
-
-  /* border: 4px solid blue;  */
-  /* background-color: white;*/
-
-}
-
+#dateContainer.hidden-content .data {
+  visibility: hidden;
+};
 
 
 
