@@ -1,7 +1,9 @@
 const engine = {
   date: new Date(),
   modeChanged: false,
-  intervalIdClock: null, // Armazena o ID do intervalo do relógio
+  intervalIdClock: null, // Armazena o ID do intervalo do relógio3
+
+
   intervalIdChrono: null,
   seconds: 0,
   minutes: 0,
@@ -10,6 +12,10 @@ const engine = {
   secondHand: document.querySelector(".seconds"),
   minuteHand: document.querySelector(".minutes"),
   hourHand: document.querySelector(".hours"),
+
+  startButton: document.getElementById("start"),
+  stopButton: document.getElementById("stop"),
+  resetButton: document.getElementById("reset"),
 
   createMarcadores: function () {
     let marcadores = document.querySelector(".marcadores");
@@ -133,56 +139,58 @@ const engine = {
   changetextInside: function () {},
 
   changeMode: function () {
-    //start and stop buttons
-    const startButton = document.getElementById("start");
-    const stopButton = document.getElementById("stop");
-    const resetButton = document.getElementById("reset");
-
-    //text Inside
-    let textInside = document.querySelectorAll(".textInside");
-
-    textInside.forEach((text) => {
-      text.style.display = this.modeChanged ? "block" : "none";
-    });
-
-    // date
-    let date = document.querySelectorAll(".data");
+    // Selecionar os elementos relevantes
+    let textInsideElements = document.querySelectorAll(".textInside");
+    let dateElement = document.getElementById("date");
+    let hoursElements = document.querySelectorAll(".hours");
   
-    date.forEach((text) => {
+    // Alternar a exibição dos elementos
+    textInsideElements.forEach((text) => {
       text.style.display = this.modeChanged ? "block" : "none";
     });
-
-    // hour hand
-    let hours = document.querySelectorAll(".hours");
-
-    hours.forEach((text) => {
+  
+    dateElement.style.display = this.modeChanged ? "block" : "none";
+  
+    hoursElements.forEach((text) => {
       text.style.display = this.modeChanged ? "block" : "none";
     });
-
-    //Verifica se o relógio está em execução para parar ou iniciar conforme necessário
+  
+    // Verificar se o relógio está em execução para parar ou iniciar conforme necessário
     if (this.modeChanged) {
       this.startClock();
       modeButton.innerHTML = "Modo cronógrafo";
-
-      startButton.style.display = "none";
-      stopButton.style.display = "none";
-      resetButton.style.display = "none";
-
-      //parar e zerar crono
+  
+      // Ocultar botões no modo cronógrafo
+      this.startButton.style.display = "none";
+      this.stopButton.style.display = "none";
+      this.resetButton.style.display = "none";
+  
+      // Ajustar posição do date
+      dateElement.style.position = "absolute";
+      dateElement.style.top = "5%";
+      dateElement.style.left = "5%";
+  
+      // Parar e zerar cronômetro
       this.stopChronograph();
       this.resetChronograph();
     } else {
+      // No modo relógio
       this.stopClock();
       this.resetSecondAndMinuteHands();
       this.changetextInside();
-
+  
       modeButton.innerHTML = "Modo relógio";
-
-      startButton.style.display = "block";
-      stopButton.style.display = "block";
-      resetButton.style.display = "block";
+  
+      // Restaurar posição do date
+      dateElement.style.position = "relative"; 
+  
+      // Exibir botões no modo relógio
+      this.startButton.style.display = "block";
+      this.stopButton.style.display = "block";
+      this.resetButton.style.display = "block";
     }
-
+  
+    // Alternar o estado do modo
     this.modeChanged = !this.modeChanged;
   },
 
