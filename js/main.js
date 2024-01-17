@@ -17,6 +17,9 @@ const engine = {
   stopButton: document.getElementById("stop"),
   resetButton: document.getElementById("reset"),
 
+  chronoDisplay: document.getElementById("chronoDisplay"),
+
+
   createMarcadores: function () {
     let marcadores = document.querySelector(".marcadores");
     j = 12;
@@ -93,12 +96,26 @@ const engine = {
     }, 50); // Tempo de espera antes de aplicar a transformação
   },
 
+  updateChronoDisplay: function () {
+    // Atualiza o display do cronômetro digital
+    const formattedMinutes = this.minutes < 10 ? `0${this.minutes}` : this.minutes;
+    const formattedSeconds = this.seconds < 10 ? `0${this.seconds}` : this.seconds;
+    
+    this.chronoDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`;
+
+    
+  },
+
   startChronograph: function () {
     this.secondHand.style.transition = "none";
     this.minuteHand.style.transition = "none";
 
     this.intervalIdChrono = setInterval(() => {
       this.seconds++;
+
+      this.updateChronoDisplay();
+
+      
 
       let secPosition = this.seconds * 6 + 180;
       this.secondHand.style.transform = `rotate(${secPosition}deg)`;
@@ -123,6 +140,8 @@ const engine = {
     this.seconds = 0;
     this.minutes = 0;
 
+    this.updateChronoDisplay();
+
     this.secondHand.style.transition = "transform 1s ease-in-out";
     this.minuteHand.style.transition = "transform 1s ease-in-out";
 
@@ -143,7 +162,7 @@ const engine = {
     let textInsideElements = document.querySelectorAll(".textInside");
     let dateElement = document.getElementById("date");
     let hoursElements = document.querySelectorAll(".hours");
-  
+    
     // Alternar a exibição dos elementos
     textInsideElements.forEach((text) => {
       text.style.display = this.modeChanged ? "block" : "none";
@@ -154,6 +173,7 @@ const engine = {
     hoursElements.forEach((text) => {
       text.style.display = this.modeChanged ? "block" : "none";
     });
+
   
     // Verificar se o relógio está em execução para parar ou iniciar conforme necessário
     if (this.modeChanged) {
@@ -173,6 +193,9 @@ const engine = {
       // Parar e zerar cronômetro
       this.stopChronograph();
       this.resetChronograph();
+
+      this.chronoDisplay.style.display = "none";
+
     } else {
       // No modo relógio
       this.stopClock();
@@ -188,11 +211,17 @@ const engine = {
       this.startButton.style.display = "block";
       this.stopButton.style.display = "block";
       this.resetButton.style.display = "block";
+
+      this.chronoDisplay.style.display = "block";
+      this.chronoDisplay.textContent = "00:00";
     }
   
     // Alternar o estado do modo
     this.modeChanged = !this.modeChanged;
+
+    
   },
+
 
   createData: function () {
     const options = { weekday: "short" };
@@ -211,6 +240,8 @@ const engine = {
     this.createData();
     this.createMarcadores();
     this.startClock();
+
+    
   },
 };
 

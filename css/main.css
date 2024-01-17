@@ -293,7 +293,10 @@ body{
   font-size: 3.8rem;  
 
   white-space: nowrap;
-
-
 }
 
+#chronoDisplay{
+  padding-top: 0.8rem;
+  padding-left: 3.2rem;
+  font-size: 3.8rem;  
+}
