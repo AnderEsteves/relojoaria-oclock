@@ -19,6 +19,113 @@ const engine = {
 
   chronoDisplay: document.getElementById("chronoDisplay"),
 
+  fullscreenButton: document.getElementById("fullscreenButton"),
+
+
+  currentColorScheme: {
+    clockFace: {
+      markers: "blue",
+      bigMarkers: "red",
+      textInside: "black",
+      textOutside: "black",
+      clockHands: "black",
+      pivot: "red",
+      borderDate: "blue",
+      
+    },
+    background: "white",
+  },
+
+
+  changeColors: function () {
+    const clockFace = document.querySelector(".clock");
+    const markers = document.querySelectorAll(".marcador");
+    const bigMarkersTextInside = document.querySelectorAll(".marcador.big, .textInside");
+    const bigMarkersTextOutside = document.querySelectorAll(".marcador.big, .textOutside");
+    const secondHands = document.querySelectorAll(".seconds");//".seconds, .minutes, .hours")
+    const pivot = document.querySelector(".pivot");
+    const borderDate = document.querySelector(".borderDate");
+
+    const circuloInside = document.querySelector(".circuloInside");
+    const colorBorderDate = document.querySelector(".borderDate");
+  
+
+    // Atualiza a cor do rosto do relógio
+    clockFace.style.background = this.currentColorScheme.background;
+    
+
+
+    circuloInside.style.background = this.currentColorScheme.clockFace.circuloInside;
+    colorBorderDate.style.background = this.currentColorScheme.clockFace.borderDate;
+
+  
+
+
+    // Atualiza a cor dos marcadores
+    markers.forEach((marker) => {
+      marker.style.background = this.currentColorScheme.clockFace.markers;
+      marker.style.borderColor = this.currentColorScheme.clockFace.markers;
+    });
+
+    // Atualiza a cor dos grandes marcadores (textInside)
+    bigMarkersTextInside.forEach((textInside) => {
+      textInside.style.color = this.currentColorScheme.clockFace.textInside;
+    });
+
+    // Atualiza a cor dos grandes marcadores (textOutside)
+    bigMarkersTextOutside.forEach((textOutside) => {
+      textOutside.style.color = this.currentColorScheme.clockFace.textOutside;
+    });
+
+    // Atualiza a cor dos ponteiros do relógio
+    secondHands.forEach((hand) => {
+      hand.style.background = this.currentColorScheme.clockFace.clockHands;
+    });
+
+    // Atualiza a cor do pino (pivot)
+    pivot.style.background = this.currentColorScheme.clockFace.pivot;
+
+    // Atualiza a cor da borda da data
+    borderDate.style.borderColor = this.currentColorScheme.clockFace.borderDate;
+  },
+
+  changeColorScheme: function (scheme) {
+    switch (scheme) {
+      case 'dark':
+        this.currentColorScheme = {
+          clockFace: {
+            markers: "#39ff14",
+            bigMarkers: "white",
+            textInside: "white",
+            textOutside: "white",
+            secondHands: "red",
+            pivot: "red",
+
+            borderDate: "#39ff14",
+            circuloInside: "#39ff14",
+            colorBorderDate:"#39ff14",
+            minutesAndHoursBefore: "white",
+          },
+          // background: "black",
+        };
+      break;
+      default: // Padrão
+        this.currentColorScheme = {
+          clockFace: {
+            markers: "blue",
+            bigMarkers: "red",
+            textInside: "black",
+            textOutside: "black",
+            clockHands: "black",
+            pivot: "red",
+            borderDate: "blue",
+          },
+          background: "white",
+        };
+    }
+
+    this.changeColors();
+  },
 
   createMarcadores: function () {
     let marcadores = document.querySelector(".marcadores");
@@ -102,8 +209,6 @@ const engine = {
     const formattedSeconds = this.seconds < 10 ? `0${this.seconds}` : this.seconds;
     
     this.chronoDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`;
-
-    
   },
 
   startChronograph: function () {
@@ -196,6 +301,8 @@ const engine = {
 
       this.chronoDisplay.style.display = "none";
 
+      this.changeColors();
+
     } else {
       // No modo relógio
       this.stopClock();
@@ -236,12 +343,30 @@ const engine = {
     document.getElementById("date").textContent = combinedDate;
   },
 
+
+
+  changeFullscreen: function () {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else{
+      document.exitFullscreen();
+    }
+  },
+
+
+  setupEventListeners: function () {
+    // chama a função quando clica no botão
+    this.fullscreenButton.addEventListener("click", () => {
+      this.changeFullscreen();
+    });
+  },
+
   start: function () {
     this.createData();
     this.createMarcadores();
     this.startClock();
+    this.setupEventListeners();
 
-    
   },
 };
 
