@@ -3,7 +3,6 @@ const engine = {
   modeChanged: false,
   intervalIdClock: null, // Armazena o ID do intervalo do relógio3
 
-
   intervalIdChrono: null,
   seconds: 0,
   minutes: 0,
@@ -23,9 +22,7 @@ const engine = {
 
   darkButton: document.getElementById("dark"),
 
-  darkButtonStatus: false,
-
-
+  darkButtonStatus: true,
 
   changeDarkButton: function () {
     let textInside = document.querySelectorAll(".textInside");
@@ -36,7 +33,6 @@ const engine = {
 
     let marcadores = document.querySelectorAll(".marcador");
 
-    
     let minutesElement = document.querySelector(".minutes");
     let hoursElement = document.querySelector(".hours");
 
@@ -44,56 +40,43 @@ const engine = {
 
     let clockBackground = document.querySelectorAll(".clockContainer");
 
-
-
-
     darkButton.innerHTML = this.darkButtonStatus ? "Modo Claro" : "Modo Escuro";
 
+    
 
     textInside.forEach((text) => {
-        text.style.color = this.darkButtonStatus ? "white" : "black";
+      text.style.color = this.darkButtonStatus ? "white" : "black";
     });
 
     textOutside.forEach((text) => {
       text.style.color = this.darkButtonStatus ? "white" : "black";
     });
 
-
     minuteHoursHands.forEach((text) => {
       text.style.background = this.darkButtonStatus ? "white" : "black";
     });
 
-
-
     marcadores.forEach((text) => {
       text.style.background = this.darkButtonStatus ? "#39ff14" : "blue";
       text.style.borderColor = this.darkButtonStatus ? "#39ff14" : "blue";
-
     });
 
-
-
-    // Adiciona ou remove a classe dark-mode para os elementos 
+    // Adiciona ou remove a classe dark-mode para os elementos
     minutesElement.classList.toggle("dark-mode", this.darkButtonStatus);
     hoursElement.classList.toggle("dark-mode", this.darkButtonStatus);
-
 
     clockBackground.forEach((text) => {
       text.style.background = this.darkButtonStatus ? "black" : "white";
     });
-    
-
 
     circuloInside.style.borderColor = this.darkButtonStatus ? "#39ff14" : "navy";
 
+    colorBorderDate.style.borderColor = this.darkButtonStatus ? "#39ff14": "black";
     
-    colorBorderDate.style.borderColor = this.darkButtonStatus ? "#39ff14" : "black";
     colorBorderDate.style.backgroundColor = this.darkButtonStatus ? "#39ff14" : "white";
-
 
     this.darkButtonStatus = !this.darkButtonStatus;
   },
-
 
   createMarcadores: function () {
     let marcadores = document.querySelector(".marcadores");
@@ -173,9 +156,11 @@ const engine = {
 
   updateChronoDisplay: function () {
     // Atualiza o display do cronômetro digital
-    const formattedMinutes = this.minutes < 10 ? `0${this.minutes}` : this.minutes;
-    const formattedSeconds = this.seconds < 10 ? `0${this.seconds}` : this.seconds;
-    
+    const formattedMinutes =
+      this.minutes < 10 ? `0${this.minutes}` : this.minutes;
+    const formattedSeconds =
+      this.seconds < 10 ? `0${this.seconds}` : this.seconds;
+
     this.chronoDisplay.textContent = `${formattedMinutes}:${formattedSeconds}`;
   },
 
@@ -187,8 +172,6 @@ const engine = {
       this.seconds++;
 
       this.updateChronoDisplay();
-
-      
 
       let secPosition = this.seconds * 6 + 180;
       this.secondHand.style.transform = `rotate(${secPosition}deg)`;
@@ -231,61 +214,53 @@ const engine = {
   changetextInside: function () {},
 
   changeMode: function () {
-
     // Selecionar os elementos relevantes
     let textInsideElements = document.querySelectorAll(".textInside");
     let dateElement = document.getElementById("date");
     let hoursElements = document.querySelectorAll(".hours");
-    
+
     // Alternar a exibição dos elementos
     textInsideElements.forEach((text) => {
       text.style.display = this.modeChanged ? "block" : "none";
     });
-  
+
     dateElement.style.display = this.modeChanged ? "block" : "none";
-  
+
     hoursElements.forEach((text) => {
       text.style.display = this.modeChanged ? "block" : "none";
     });
 
-  
     // Verificar se o relógio está em execução para parar ou iniciar conforme necessário
     if (this.modeChanged) {
       this.startClock();
       modeButton.innerHTML = "Modo cronógrafo";
-  
+
       // Ocultar botões no modo cronógrafo
       this.startButton.style.display = "none";
       this.stopButton.style.display = "none";
       this.resetButton.style.display = "none";
-  
+
       // Ajustar posição do date
       dateElement.style.position = "absolute";
       dateElement.style.top = "5%";
       dateElement.style.left = "5%";
-  
+
       // Parar e zerar cronômetro
       this.stopChronograph();
       this.resetChronograph();
 
       this.chronoDisplay.style.display = "none";
-
-   
-      
-
-
-
     } else {
       // No modo relógio
       this.stopClock();
       this.resetSecondAndMinuteHands();
       this.changetextInside();
-  
+
       modeButton.innerHTML = "Modo relógio";
-  
+
       // Restaurar posição do date
-      dateElement.style.position = "relative"; 
-  
+      dateElement.style.position = "relative";
+
       // Exibir botões no modo relógio
       this.startButton.style.display = "block";
       this.stopButton.style.display = "block";
@@ -294,13 +269,10 @@ const engine = {
       this.chronoDisplay.style.display = "block";
       this.chronoDisplay.textContent = "00:00";
     }
-  
+
     // Alternar o estado do modo
     this.modeChanged = !this.modeChanged;
-
-    
   },
-
 
   createData: function () {
     const options = { weekday: "short" };
@@ -315,30 +287,18 @@ const engine = {
     document.getElementById("date").textContent = combinedDate;
   },
 
-
-
-  changeFullscreen: function () {
+  fullScreen: function () {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
-    } else{
+    } else {
       document.exitFullscreen();
     }
-  },
-
-
-  setupEventListeners: function () {
-    // chama a função quando clica no botão
-    this.fullscreenButton.addEventListener("click", () => {
-      this.changeFullscreen();
-    });
   },
 
   start: function () {
     this.createData();
     this.createMarcadores();
     this.startClock();
-    this.setupEventListeners();
-
   },
 };
 
