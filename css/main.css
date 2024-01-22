@@ -31,8 +31,8 @@ body{
   justify-content: space-around;
   background-color: rgb(255, 255, 255);
 
-  border: 4px solid red;
-  background-color: black;
+  /* border: 4px solid red; */
+  /* background-color: black; */
 }
 
 .menuClock{
@@ -42,12 +42,21 @@ body{
 
   position: relative;
 
+  /* background-color: aquamarine; */
   top: 28%;
 }
 
 .clockContainer{
   /* border: 4px solid orange; */
   position: relative;
+  
+  width: 650px;
+  height: 650px;
+
+  top: 15%;
+
+  background-color: white;
+
 }
 
 .clock{
@@ -259,11 +268,12 @@ body{
   
 }
 
-.clock.dark-mode .minutes::before,
-.clock.dark-mode .hours::before {
+
+
+.minutes.dark-mode::before,
+.hours.dark-mode::before {
   background: white; /* ou qualquer cor desejada para o modo escuro */
 }
-
 
 
 .pivot, .pivot::before{

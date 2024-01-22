@@ -26,193 +26,73 @@ const engine = {
   darkButtonStatus: false,
 
 
-  // currentColorScheme: {
-  //   clockFace: {
-  //     markers: "blue",
-  //     textInside: "black",
-  //     textOutside: "black",
-  //     clockHands: "black",
-  //     borderDate: "blue",
-  //     minutesBefore: "black",
-  //     hoursBefore: "black",
-  //   },
-  //   // background: "white",
-  // },
 
+  changeDarkButton: function () {
+    let textInside = document.querySelectorAll(".textInside");
+    let textOutside = document.querySelectorAll(".textOutside");
 
-  // changeColors: function () {
-    
-  //   const markers = document.querySelectorAll(".marcador");
-  //   const bigMarkersTextInside = document.querySelectorAll(".marcador.big, .textInside");
-  //   const bigMarkersTextOutside = document.querySelectorAll(".marcador.big, .textOutside");
-  //   const secondHands = document.querySelectorAll(".seconds");//".seconds, .minutes, .hours")
-  //   const minuteHoursHands = document.querySelectorAll(".minutes, .hours");//".seconds, .minutes, .hours")
-  //   const pivot = document.querySelector(".pivot");
-  //   const borderDate = document.querySelector(".borderDate");
+    let circuloInside = document.querySelector(".circuloInside");
+    let colorBorderDate = document.querySelector(".borderDate");
 
-  //   const circuloInside = document.querySelector(".circuloInside");
-  //   const colorBorderDate = document.querySelector(".borderDate");
-
-  //   circuloInside.style.borderColor = this.currentColorScheme.clockFace.circuloInside;
-  //   colorBorderDate.style.background = this.currentColorScheme.clockFace.borderDate;
-
-  //   // Atualiza a cor dos marcadores
-  //   minuteHoursHands.forEach((hand) => {
-  //     hand.style.background = this.currentColorScheme.clockFace.minuteHoursHands;
-  //   });
-
-
-  //   // Atualiza a cor dos marcadores
-  //   markers.forEach((marker) => {
-  //     marker.style.background = this.currentColorScheme.clockFace.markers;
-  //     marker.style.borderColor = this.currentColorScheme.clockFace.markers;
-  //   });
-
-  //   // Atualiza a cor dos grandes marcadores (textInside)
-  //   bigMarkersTextInside.forEach((textInside) => {
-  //     textInside.style.color = this.currentColorScheme.clockFace.textInside;
-  //   });
-
-  //   // Atualiza a cor dos grandes marcadores (textOutside)
-  //   bigMarkersTextOutside.forEach((textOutside) => {
-  //     textOutside.style.color = this.currentColorScheme.clockFace.textOutside;
-  //   });
-
-  //   // ponteiro segundos
-  //   secondHands.forEach((hand) => {
-  //     hand.style.background = this.currentColorScheme.clockFace.clockHands;
-  //   });
-
-  //   // Atualiza a cor do pino (pivot)
-  //    pivot.style.background = this.currentColorScheme.clockFace.pivot;
-
-  //   // Atualiza a cor da borda da data
-  //   borderDate.style.borderColor = this.currentColorScheme.clockFace.borderDate;
-  // },
-
-  // changeColorScheme: function (scheme) {
-  //   switch (scheme) {
-  //     case 'dark':
-  //       this.currentColorScheme = {
-  //         clockFace: {
-  //           markers: "#39ff14",
-  //           bigMarkers: "white",
-  //           textInside: "white",
-  //           textOutside: "white",
-  //          // secondHands: "null",
-  //           pivot: "red",
-  //           minuteHoursHands: "white",
-  //           borderDate: "#39ff14",
-  //           circuloInside: "#39ff14",
-  //           colorBorderDate:"#39ff14",
-
-  //         },
-  //         // background: "black",
-  //       };
-  //       document.querySelector('.clock').classList.add('dark-mode');
-  //     break;
-  //     default: // Padrão
-  //       this.currentColorScheme = {
-  //         clockFace: {
-  //           markers: "blue",
-  //           bigMarkers: "red",
-  //           textInside: "black",
-  //           textOutside: "black",
-  //           clockHands: "black",
-  //           pivot: "red",
-  //           borderDate: "blue",
-  //         },
-  //         background: "white",
-  //       };
-  //   }
-
-  //   this.changeColors();
-  // },
-
-  // changeColors: function () {
-  //   const elementsToUpdate = [
-  //     { selector: ".marcador, .textOutside, .textInside", properties: ["color", "background", "borderColor"] },
-  //     { selector: ".seconds, .minutes, .hours", properties: ["background"] },
-  //     { selector: ".pivot", properties: ["background"] },
-  //     { selector: ".borderDate", properties: ["borderColor"] },
-  //     { selector: ".circuloInside", properties: ["borderColor", "background"] },
-  //   ];
-  
-  //   elementsToUpdate.forEach((element) => {
-  //     const selectedElements = document.querySelectorAll(element.selector);
-  
-  //     selectedElements.forEach((selectedElement) => {
-  //       element.properties.forEach((property) => {
-  //         if (property in this.currentColorScheme.clockFace) {
-  //           // Verifique se o ponteiro é um segundo, minuto ou hora
-  //           const isClockHand = element.selector.includes(".seconds, .minutes, .hours");
-  
-  //           // Ajuste específico para os ponteiros de minutos e horas
-  //           if (isClockHand && property === "background") {
-  //             selectedElement.style[property] = this.currentColorScheme.clockFace.clockHands;
-  //           } else {
-  //             selectedElement.style[property] = this.currentColorScheme.clockFace[property];
-  //           }
-  //         }
-  //       });
-  //     });
-  //   });
-  // },
-
-  
-  
-  // changeColorScheme: function () {
-  //   const darkMode = document.querySelector('.clock').classList.toggle('dark-mode');
-  
-  //   this.currentColorScheme = {
-  //     clockFace: {
-  //       markers: darkMode ? "#39ff14" : "blue",
-  //       bigMarkers: darkMode ? "#39ff14" : "red",
-  //       textInside: darkMode ? "white" : "black",
-  //       textOutside: darkMode ? "white" : "black",
-  //       clockHands: darkMode ? "white" : "black",
-  //       pivot: darkMode ? "red" : "red", // Defina a cor desejada
-  //       borderDate: darkMode ? "#39ff14" : "blue",
-  //       circuloInside: darkMode ? "#39ff14" : "#39ff14", // Defina a cor desejada
-  //     },
-  //     background: darkMode ? "black" : "white",
-  //   };
-  
-  //   this.changeColors();
-  // },
-
-
-  
-
-  changeDarkButton: function (){
-
-
-
-
+    let marcadores = document.querySelectorAll(".marcador");
 
     
+    let minutesElement = document.querySelector(".minutes");
+    let hoursElement = document.querySelector(".hours");
 
-    if(this.darkButtonStatus){
+    let minuteHoursHands = document.querySelectorAll(".minutes, .hours");
 
-      darkButton.innerHTML = "Modo Claro";
+    let clockBackground = document.querySelectorAll(".clockContainer");
 
-    }else{
 
-      darkButton.innerHTML = "Modo Escuro";
 
-    }
 
-  
+    darkButton.innerHTML = this.darkButtonStatus ? "Modo Claro" : "Modo Escuro";
+
+
+    textInside.forEach((text) => {
+        text.style.color = this.darkButtonStatus ? "white" : "black";
+    });
+
+    textOutside.forEach((text) => {
+      text.style.color = this.darkButtonStatus ? "white" : "black";
+    });
+
+
+    minuteHoursHands.forEach((text) => {
+      text.style.background = this.darkButtonStatus ? "white" : "black";
+    });
+
+
+
+    marcadores.forEach((text) => {
+      text.style.background = this.darkButtonStatus ? "#39ff14" : "blue";
+      text.style.borderColor = this.darkButtonStatus ? "#39ff14" : "blue";
+
+    });
+
+
+
+    // Adiciona ou remove a classe dark-mode para os elementos 
+    minutesElement.classList.toggle("dark-mode", this.darkButtonStatus);
+    hoursElement.classList.toggle("dark-mode", this.darkButtonStatus);
+
+
+    clockBackground.forEach((text) => {
+      text.style.background = this.darkButtonStatus ? "black" : "white";
+    });
+    
+
+
+    circuloInside.style.borderColor = this.darkButtonStatus ? "#39ff14" : "navy";
+
+    
+    colorBorderDate.style.borderColor = this.darkButtonStatus ? "#39ff14" : "black";
+    colorBorderDate.style.backgroundColor = this.darkButtonStatus ? "#39ff14" : "white";
+
+
     this.darkButtonStatus = !this.darkButtonStatus;
-
   },
-
-
-
-
-
-
-
 
 
   createMarcadores: function () {
@@ -352,11 +232,6 @@ const engine = {
 
   changeMode: function () {
 
-   
-
-
-
-
     // Selecionar os elementos relevantes
     let textInsideElements = document.querySelectorAll(".textInside");
     let dateElement = document.getElementById("date");
@@ -398,7 +273,7 @@ const engine = {
    
       
 
-      this.changeColors();
+
 
     } else {
       // No modo relógio
