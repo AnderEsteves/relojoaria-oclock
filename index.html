@@ -33,15 +33,19 @@
           <div id="chronoDisplay"></div>
         </div>  
 
+        
         <div class="menuClock">
-          <button onclick="engine.changeMode()" id="modeButton"><a>Modo cronografo</a></button>
+          <p>MENU NAVEGAÇÃO</p>
+          <button onclick="engine.changeMode()" id="modeButton">Modo cronografo</button>
           <button onclick="engine.fullScreen(document.querySelector('.clockContainer'))" id="fullscreenButton">Tela Cheia</button>
           <button onclick="engine.changeDarkButton()" id="darkButton">Modo Escuro</button>
-          <button onclick="engine.startChronograph()" id="start"><a>Iniciar</a></button>
-          <button onclick="engine.stopChronograph()" id="stop">Parar</button>
-          <button onclick="engine.resetChronograph()" id="reset"><a>Zerar</a></button>
         </div>
 
+        <div class="second__menuClock">
+          <a>MENU Cronômetro</a>
+          <button onclick="engine.startChronograph()" id="start"><a>Iniciar</a></button>
+          <button onclick="engine.stopChronograph()" id="stop">Parar</button>
+        </div>
       </div>
 
      
