@@ -21,6 +21,18 @@ body{
 }
 
 
+.flex{
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  border: 3px solid pink ;
+ 
+}
+
+
 .center{
   width: 100%;
   height: 100vh;  
@@ -36,28 +48,33 @@ body{
 }
 
 .menuClock{
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  /* height: 50%; */
   border: 4px solid pink;
 
   position: relative;
 
   /* background-color: aquamarine; */
   top: 28%;
+
+  display: flex;
+  justify-content: space-between;
+
 }
 
 .clockContainer{
-  /* border: 4px solid orange; */
+  border: 4px solid orange;
   position: relative;
   
   width: 650px;
-  height: 650px;
+  height: 750px;
 
-  top: 15%;
+  top: 10%;
 
   background-color: white;
-
 }
+
+
 
 .clock{
   width: 400px;
@@ -69,6 +86,19 @@ body{
   transform: translate(-50%, -50%);
 
   /* border: 4px solid green; */
+}
+
+
+.information{
+  width: 650px;
+  height: 750px;
+
+  border: 4px solid orange;
+
+  top: 10%;
+
+  position: relative;
+
 }
 
 
@@ -127,7 +157,6 @@ body{
   top: calc(-500% - 7px); /* ajusta os numeros da borda -600 */
   left: calc(50% - 40px); /* ajusta os numeros na horizontal 40*/
  
-
   letter-spacing: 0.2rem  ;
 
   /* border: 1px solid salmon; */
@@ -191,9 +220,7 @@ body{
   top: 50%;
   left: calc(50% - 1px);
   border-radius: 0.6mm;
-  transform-origin: 1px 0;
-
-  
+  transform-origin: 1px 0; 
 } 
 
 
@@ -201,28 +228,21 @@ body{
   width: 2px;
   height: 283px;
   transform-origin: 1px 26px; 
-  
-  
   top: calc(50% - 26px);
-
   background: red;
   z-index: 2;
 }
 
 
 
-
-
 .hours{
   height: 158px;
-  /* transform: rotate(180deg); */
   z-index: 1;
 }
 
 
 .minutes{
   height: 220px;
-  /* transform: rotate(360deg); */
   z-index: 1;
 }
 
@@ -230,7 +250,6 @@ body{
 .hours{
   background: black;
 }
-
 
 
 .seconds::before{
@@ -250,9 +269,6 @@ body{
 
 
 
-
-
-
 .minutes::before,
 .hours::before {
   position: absolute;
@@ -265,14 +281,13 @@ body{
   height: calc(100% - 22px);
   background: black;
   border-radius: 2rem;
-  
 }
 
 
 
 .minutes.dark-mode::before,
 .hours.dark-mode::before {
-  background: white; /* ou qualquer cor desejada para o modo escuro */
+  background: white; 
 }
 
 
@@ -299,8 +314,6 @@ body{
   width: 5px;
   height: 5px;
 }
-
-
 
 
 
@@ -338,6 +351,23 @@ body{
   padding-top: 0.8rem;
   padding-left: 3.2rem;
   font-size: 3.8rem;  
-
 }
+
+
+
+
+
+@media(max-width: 1536px){
+  .flex{
+    max-width: 1280px;
+  }
+}
+
+
+@media(max-width: 1280px){
+  .flex{
+    max-width: 1024px;
+  }
+}
+
 

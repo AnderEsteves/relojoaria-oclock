@@ -287,9 +287,17 @@ const engine = {
     document.getElementById("date").textContent = combinedDate;
   },
 
-  fullScreen: function () {
+  // fullScreen: function () {
+  //   if (!document.fullscreenElement) {
+  //     document.documentElement.requestFullscreen();
+  //   } else {
+  //     document.exitFullscreen();
+  //   }
+  // },
+
+  fullScreen: function (element) {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
+      element.requestFullscreen();
     } else {
       document.exitFullscreen();
     }

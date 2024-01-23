@@ -11,21 +11,14 @@
   <header></header>  
   
 
-  <section class="center">
+  <section class="center flex">
 
-    <div class="menuClock">
-      <button onclick="engine.changeMode()" id="modeButton"><a>Modo cronografo</a></button>
-      <button onclick="engine.fullScreen()" id="fullscreenButton">Tela Cheia</button>
-
-      <button  onclick="engine.changeDarkButton()" id="darkButton">Modo Escuro</button>
-
-      <button onclick="engine.startChronograph()" id="start"><a>Iniciar</a></button>
-      <button onclick="engine.stopChronograph()" id="stop">Parar</button>
-      <button onclick="engine.resetChronograph()" id="reset"><a>Zerar</a></button>
-      
+    <div class="information">
+      <h1>oi</h1>
     </div>
-  
+
     <div class="clockContainer">
+
       <div class="clock">
         <div class="circuloInside"></div>
   
@@ -39,7 +32,20 @@
           <div id="date"></div>
           <div id="chronoDisplay"></div>
         </div>  
+
+        <div class="menuClock">
+          <button onclick="engine.changeMode()" id="modeButton"><a>Modo cronografo</a></button>
+          <button onclick="engine.fullScreen(document.querySelector('.clockContainer'))" id="fullscreenButton">Tela Cheia</button>
+          <button onclick="engine.changeDarkButton()" id="darkButton">Modo Escuro</button>
+          <button onclick="engine.startChronograph()" id="start"><a>Iniciar</a></button>
+          <button onclick="engine.stopChronograph()" id="stop">Parar</button>
+          <button onclick="engine.resetChronograph()" id="reset"><a>Zerar</a></button>
+        </div>
+
       </div>
+
+     
+
     </div>
     
   </section>
