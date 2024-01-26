@@ -24,6 +24,12 @@ const engine = {
 
   darkButtonStatus: true,
 
+  originalTranslateY: 1,
+
+
+
+
+
   changeDarkButton: function () {
     let textInside = document.querySelectorAll(".textInside");
     let textOutside = document.querySelectorAll(".textOutside");
@@ -94,7 +100,8 @@ const engine = {
         marcador.className = "marcador big";
         textOutside.className = "textOutside";
         textOutside.innerHTML = k;
-        textOutside.style.transform = `rotate(${-i}deg) translateY(2px)`;
+        // textOutside.style.transform = `rotate(${-i}deg) translateY(2px)`;
+        textOutside.style.transform = `rotate(${-i}deg) translateY(${this.originalTranslateY}px)`;
 
         let textInside = document.createElement("span");
         textInside.className = "textInside";
@@ -287,21 +294,32 @@ const engine = {
     document.getElementById("date").textContent = combinedDate;
   },
 
-  // fullScreen: function () {
-  //   if (!document.fullscreenElement) {
-  //     document.documentElement.requestFullscreen();
-  //   } else {
-  //     document.exitFullscreen();
-  //   }
-  // },
 
   fullScreen: function (element) {
     if (!document.fullscreenElement) {
       element.requestFullscreen();
+
+       // Ajustando o tamanho do translateY para um valor maior (por exemplo, -500px)
+       this.originalTranslateY = -350; // Atualize conforme necessário
+       this.updateMarcadoresTranslateY(); // Função para atualizar todos os marcadores com o novo translateY
+
     } else {
       document.exitFullscreen();
+
+      // Restaurando o tamanho original do translateY
+      this.originalTranslateY = -250; // Restaure para o valor original
+      this.updateMarcadoresTranslateY(); // Função para atualizar todos os marcadores com o novo translateY
     }
   },
+
+  updateMarcadoresTranslateY: function () {
+    // Atualizar todos os marcadores com o novo valor de translateY
+    let marcadores = document.querySelector(".marcadores");
+    marcadores.childNodes.forEach((marcador, index) => {
+      marcador.style.transform = `rotate(${index * 6}deg) translateY(${this.originalTranslateY}px)`;
+    });
+  },
+
 
   start: function () {
     this.createData();
