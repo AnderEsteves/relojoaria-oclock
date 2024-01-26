@@ -26,6 +26,9 @@ const engine = {
 
   originalTranslateY: 1,
 
+  borderDate: document.querySelector(".borderDate"),
+
+
 
 
 
@@ -47,8 +50,6 @@ const engine = {
     let clockBackground = document.querySelectorAll(".clockContainer");
 
     darkButton.innerHTML = this.darkButtonStatus ? "Modo Claro" : "Modo Escuro";
-
-    
 
     textInside.forEach((text) => {
       text.style.color = this.darkButtonStatus ? "white" : "black";
@@ -75,11 +76,17 @@ const engine = {
       text.style.background = this.darkButtonStatus ? "black" : "white";
     });
 
-    circuloInside.style.borderColor = this.darkButtonStatus ? "#39ff14" : "navy";
+    circuloInside.style.borderColor = this.darkButtonStatus
+      ? "#39ff14"
+      : "navy";
 
-    colorBorderDate.style.borderColor = this.darkButtonStatus ? "#39ff14": "black";
-    
-    colorBorderDate.style.backgroundColor = this.darkButtonStatus ? "#39ff14" : "white";
+    colorBorderDate.style.borderColor = this.darkButtonStatus
+      ? "#39ff14"
+      : "black";
+
+    colorBorderDate.style.backgroundColor = this.darkButtonStatus
+      ? "#39ff14"
+      : "white";
 
     this.darkButtonStatus = !this.darkButtonStatus;
   },
@@ -101,7 +108,9 @@ const engine = {
         textOutside.className = "textOutside";
         textOutside.innerHTML = k;
         // textOutside.style.transform = `rotate(${-i}deg) translateY(2px)`;
-        textOutside.style.transform = `rotate(${-i}deg) translateY(${this.originalTranslateY}px)`;
+        textOutside.style.transform = `rotate(${-i}deg) translateY(${
+          this.originalTranslateY
+        }px)`;
 
         let textInside = document.createElement("span");
         textInside.className = "textInside";
@@ -231,7 +240,7 @@ const engine = {
       text.style.display = this.modeChanged ? "block" : "none";
     });
 
-    dateElement.style.display = this.modeChanged ? "block" : "none";
+    dateElement.style.display = this.modeChanged ? "absolute" : "relative";
 
     hoursElements.forEach((text) => {
       text.style.display = this.modeChanged ? "block" : "none";
@@ -248,7 +257,7 @@ const engine = {
       this.resetButton.style.display = "none";
 
       // Ajustar posição do date
-      dateElement.style.position = "absolute";
+      dateElement.style.position = "relative";
       dateElement.style.top = "5%";
       dateElement.style.left = "5%";
 
@@ -257,6 +266,7 @@ const engine = {
       this.resetChronograph();
 
       this.chronoDisplay.style.display = "none";
+      dateElement.style.visibility = "visible";
     } else {
       // No modo relógio
       this.stopClock();
@@ -266,7 +276,8 @@ const engine = {
       modeButton.innerHTML = "Modo relógio";
 
       // Restaurar posição do date
-      dateElement.style.position = "relative";
+      dateElement.style.position = "absolute";
+      dateElement.style.visibility = "hidden";
 
       // Exibir botões no modo relógio
       this.startButton.style.display = "block";
@@ -294,21 +305,47 @@ const engine = {
     document.getElementById("date").textContent = combinedDate;
   },
 
-
   fullScreen: function (element) {
     if (!document.fullscreenElement) {
       element.requestFullscreen();
 
-       // Ajustando o tamanho do translateY para um valor maior (por exemplo, -500px)
-       this.originalTranslateY = -350; // Atualize conforme necessário
-       this.updateMarcadoresTranslateY(); // Função para atualizar todos os marcadores com o novo translateY
+      // Ajustando o tamanho do relogio
+      this.originalTranslateY = -350;
+      this.updateMarcadoresTranslateY();
+
+
+      // circuloInside
+      let circuloInside = document.querySelector(".circuloInside");
+      circuloInside.style.width = "500px";
+      circuloInside.style.height = "500px";
+      
+      circuloInside.style.top = "-12%"; 
+      circuloInside.style.left = "-12%";
+
+      circuloInside.style.border = "5px solid navy";
+
+
+      //date  
+      this.borderDate.style.backgroundColor = "red";
+      this.borderDate.style.left = "90%";
+
 
     } else {
       document.exitFullscreen();
 
-      // Restaurando o tamanho original do translateY
-      this.originalTranslateY = -250; // Restaure para o valor original
-      this.updateMarcadoresTranslateY(); // Função para atualizar todos os marcadores com o novo translateY
+      // Volta ao tamanho original
+      this.originalTranslateY = -250;
+      this.updateMarcadoresTranslateY();
+
+        // circuloInside
+        let circuloInside = document.querySelector(".circuloInside");
+        circuloInside.style.width = "310px";
+        circuloInside.style.height = "310px";
+        
+        circuloInside.style.top = "12%"; 
+        circuloInside.style.left = "12%";
+
+        circuloInside.style.border = "3px solid navy";
     }
   },
 
@@ -316,10 +353,11 @@ const engine = {
     // Atualizar todos os marcadores com o novo valor de translateY
     let marcadores = document.querySelector(".marcadores");
     marcadores.childNodes.forEach((marcador, index) => {
-      marcador.style.transform = `rotate(${index * 6}deg) translateY(${this.originalTranslateY}px)`;
+      marcador.style.transform = `rotate(${index * 6}deg) translateY(${
+        this.originalTranslateY
+      }px)`;
     });
   },
-
 
   start: function () {
     this.createData();
