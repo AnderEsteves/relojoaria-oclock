@@ -28,16 +28,18 @@ const engine = {
 
   borderDate: document.querySelector(".borderDate"),
 
+  menuClock: document.querySelector(".menuClock"),
 
+  menuCronometro: document.querySelector(".menuCronometro"),
 
+  circuloInside: document.querySelector(".circuloInside"),
 
-
+  divClock: document.querySelector(".clock"),
 
   changeDarkButton: function () {
     let textInside = document.querySelectorAll(".textInside");
     let textOutside = document.querySelectorAll(".textOutside");
 
-    let circuloInside = document.querySelector(".circuloInside");
     let colorBorderDate = document.querySelector(".borderDate");
 
     let marcadores = document.querySelectorAll(".marcador");
@@ -76,13 +78,13 @@ const engine = {
       text.style.background = this.darkButtonStatus ? "black" : "white";
     });
 
-    circuloInside.style.borderColor = this.darkButtonStatus
+    this.circuloInside.style.borderColor = this.darkButtonStatus
       ? "#39ff14"
       : "navy";
 
     colorBorderDate.style.borderColor = this.darkButtonStatus
       ? "#39ff14"
-      : "black";
+      : "blue";
 
     colorBorderDate.style.backgroundColor = this.darkButtonStatus
       ? "#39ff14"
@@ -257,7 +259,7 @@ const engine = {
       this.resetButton.style.display = "none";
 
       // Ajustar posição do date
-      dateElement.style.position = "relative";
+      dateElement.style.position = "absolute";
       dateElement.style.top = "5%";
       dateElement.style.left = "5%";
 
@@ -305,49 +307,80 @@ const engine = {
     document.getElementById("date").textContent = combinedDate;
   },
 
-  fullScreen: function (element) {
-    if (!document.fullscreenElement) {
+  fullScreen: function (state = true) {
+    let element = document.querySelector(".clockContainer");
+
+    if (state && !document.fullscreenElement) {
       element.requestFullscreen();
 
       // Ajustando o tamanho do relogio
       this.originalTranslateY = -350;
       this.updateMarcadoresTranslateY();
 
-
       // circuloInside
-      let circuloInside = document.querySelector(".circuloInside");
-      circuloInside.style.width = "500px";
-      circuloInside.style.height = "500px";
-      
-      circuloInside.style.top = "-12%"; 
-      circuloInside.style.left = "-12%";
+      this.circuloInside.style.width = "500px";
+      this.circuloInside.style.height = "500px";
 
-      circuloInside.style.border = "5px solid navy";
+      this.circuloInside.style.top = "-12%";
+      this.circuloInside.style.left = "-12%";
 
+      this.circuloInside.style.border = "5px solid blue";
 
-      //date  
-      this.borderDate.style.backgroundColor = "red";
+      //date
       this.borderDate.style.left = "90%";
 
+      //handsClock
+      this.secondHand.style.height = "383px";
+      this.minuteHand.style.height = "316px";
+      this.hourHand.style.height = "256px";
 
-    } else {
-      document.exitFullscreen();
+      //menuClock
+      this.menuClock.style.top = "62%";
 
+      //menuCronometro
+      this.menuCronometro.style.top = "70%";
+
+      //divClock
+      this.divClock.style.top = "45%";
+    } else  {
+      
+      if (state){
+        document.exitFullscreen();
+      }
+      
       // Volta ao tamanho original
       this.originalTranslateY = -250;
       this.updateMarcadoresTranslateY();
 
-        // circuloInside
-        let circuloInside = document.querySelector(".circuloInside");
-        circuloInside.style.width = "310px";
-        circuloInside.style.height = "310px";
-        
-        circuloInside.style.top = "12%"; 
-        circuloInside.style.left = "12%";
+      // circuloInside
+      //let circuloInside = document.querySelector(".circuloInside");
+      this.circuloInside.style.width = "310px";
+      this.circuloInside.style.height = "310px";
 
-        circuloInside.style.border = "3px solid navy";
+      this.circuloInside.style.top = "12%";
+      this.circuloInside.style.left = "12%";
+
+      this.circuloInside.style.border = "3px solid blue";
+
+      //date
+      this.borderDate.style.left = "70%";
+
+      //handsClock
+      this.secondHand.style.height = "283px";
+      this.minuteHand.style.height = "220px";
+      this.hourHand.style.height = "158px";
+
+      //menuClock
+      this.menuClock.style.top = "32%";
+
+      //menuCronometro
+      this.menuCronometro.style.top = "40%";
+
+      //divClock
+      this.divClock.style.top = "42%";
     }
   },
+
 
   updateMarcadoresTranslateY: function () {
     // Atualizar todos os marcadores com o novo valor de translateY
@@ -359,11 +392,19 @@ const engine = {
     });
   },
 
+
   start: function () {
     this.createData();
     this.createMarcadores();
     this.startClock();
+
+    document.addEventListener("fullscreenchange", () => {
+      if (!document.fullscreenElement) {
+        this.fullScreen(false);
+      }
+    });
   },
 };
+
 
 engine.start();
