@@ -1,380 +1,377 @@
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  /* background-color: aqua; */
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+#start,
+#stop,
+#reset {
+  display: none;
+}
+
+.flex {
+  max-width: 1536px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  border: 3px solid pink;
+}
+
+.center {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-around;
+  background-color: rgb(255, 255, 255);
+
+  border: 4px solid red;
+  /* background-color: black; */
+}
+
+.menuClock {
+  width: 100%;
+  top: 32%;
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.menuCronometro {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 100%;
+  top: 40%;
+  position: relative;
+}
+
+.clockContainer {
+  border: 4px solid orange;
+  position: relative;
+
+  margin: 0% 1% 0% 1%;
+
+  width: 650px;
+  height: 750px;
+
+  top: 10%;
+  overflow: hidden;
+
+  background-color: white;
+}
+
+.clock {
+  width: 400px;
+  height: 400px;
+  position: relative;
+
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* border: 4px solid green; */
+}
+
+.information {
+  width: 650px;
+  height: 750px;
+
+  border: 4px solid orange;
+  top: 10%;
+  position: relative;
+
+  margin: 0% 1% 0% 1%;
+}
+
+/* watch face */
+
+.marcadores {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.marcador {
+  width: 7px;
+  height: 12px;
+
+  display: block;
+  border: 0.2mm solid blue;
+  background: blue;
+  border-radius: 0.8mm;
+  /* border-radius: 50%; */
+
+  position: absolute;
+  top: calc(50% - 6px);
+  left: calc(50% - 0.3mm);
+}
+
+.marcador.big {
+  width: 1px;
+  height: 14px;
+
+  border: 0.3mm solid red;
+  background: red;
+  top: calc(50% - 7px);
+  left: calc(50% - 0.2mm);
+}
+
+.marcador.big > .textOutside {
+  color: black;
+  position: absolute;
+
+  top: 100%;
+  font-size: 3rem;
+  font-weight: 400;
+
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+
+  text-align: center;
+  /* overflow: hidden; */
+
+  top: calc(-500% - 7px); /* ajusta os numeros da borda -600 */
+  left: calc(50% - 40px); /* ajusta os numeros na horizontal 40*/
+
+  letter-spacing: 0.2rem;
+
+  /* border: 1px solid salmon; */
+}
+
+.marcador.big > .textInside {
+  color: black;
+  position: absolute;
+
+  top: 100%;
+  font-size: 5rem;
+  font-weight: 400;
+
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+
+  text-align: center;
+
+  top: calc(350% - 7px); /* ajusta os numeros da borda 270 */
+  left: calc(50% - 28px); /* ajusta os numeros na horizontal 50%*/
+
+  letter-spacing: 0.2rem;
+  /* 
+    border: 1px solid red; */
+}
+
+.circuloInside {
+  position: absolute;
+  display: flex;
+
+  top: 12%;
+  left: 12%;
+
+  border-radius: 50%;
+  align-items: center;
+
+  border: 3px solid blue;
+
+  width: 310px;
+  height: 310px;
+}
+
+/* watch hands*/
+
+.seconds,
+.minutes,
+.hours {
+  width: 2px;
+  height: 155px;
+  position: absolute;
+
+  top: 50%;
+  left: calc(50% - 1px);
+  border-radius: 0.6mm;
+  transform-origin: 1px 0;
+}
+
+.seconds {
+  width: 2px;
+  height: 283px;
+  transform-origin: 1px 26px;
+  top: calc(50% - 26px);
+  background: red;
+  z-index: 2;
+}
+
+.hours {
+  height: 158px;
+  z-index: 1;
+}
+
+.minutes {
+  height: 220px;
+  z-index: 1;
+}
+
+.minutes,
+.hours {
+  background: black;
+}
+
+.seconds::before {
+  position: absolute;
+  content: "";
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  width: 12px;
+  height: calc(100% - 48px);
+  background: red;
+  border-radius: 2rem;
+}
+
+.minutes::before,
+.hours::before {
+  position: absolute;
+  content: "";
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  width: 12px;
+  height: calc(100% - 22px);
+  background: black;
+  border-radius: 2rem;
+}
+
+.minutes.dark-mode::before,
+.hours.dark-mode::before {
+  background: white;
+}
+
+.pivot,
+.pivot::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+
+  background: red;
+
+  border-radius: 50%;
+
+  z-index: 2;
+}
+
+.pivot::before {
+  content: "";
+  border: 3px solid red;
+  width: 5px;
+  height: 5px;
+}
+
+/* date */
+
+.borderDate {
+  width: 15rem;
+  height: 7rem;
+
+  border: 4px solid blue;
+  background-color: white;
+
+  border-radius: 1rem;
+
+  top: 41%;
+  left: 70%;
+  position: absolute;
+  z-index: 0;
+}
+
+#date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 0.6rem;
+  font-size: 3.8rem;
+
+  white-space: nowrap;
+}
+
+#chronoDisplay {
+  padding-top: 0.8rem;
+  padding-left: 3.2rem;
+  font-size: 3.8rem;
+}
+
+@media (max-width: 1536px) {
+  .flex {
+    max-width: 1280px;
   }
 
-  html{
-    font-size: 62.5%;
-  
-  }
+  .center {
+    max-width: 100%;
+    height: 100%;
 
-  body{
-    /* background-color: aqua; */
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-
-    
-  }
-
-  #start, #stop, #reset{
-    display: none; 
-  }
-
-
-  .flex{
-    max-width: 1536px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-
-    border: 3px solid pink ;
-  
-  }
-
-
-  .center{
-    width: 100%;
-    height: 100vh;  
-    
     display: flex;
     flex-direction: row;
 
     justify-content: space-around;
     background-color: rgb(255, 255, 255);
 
-    /* border: 4px solid red; */
+    border: 4px solid red;
     /* background-color: black; */
   }
+}
 
-  .menuClock{
+@media (max-width: 1280px) {
+  .flex {
+    max-width: 1024px;
+  }
+
+  .center {
     width: 100%;
-    top: 32%;
-    position: relative;
+    height: auto;
+    flex-direction: column;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; 
-  }
-
-
-
-  .menuCronometro{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; 
-
-    width: 100%;
-    top: 40%;
-    position: relative;
-  }
-
-
-
-  .clockContainer{
-    border: 4px solid orange;
-    position: relative;
-    
-    width: 650px;
-    height: 750px;
-
-    top: 10%;
-
-    background-color: white;
-  }
-
-
-
-  .clock{
-    width: 400px;
-    height: 400px;
-    position: relative;
-
-    top: 42%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    /* border: 4px solid green; */
-  }
-
-
-  .information{
-    width: 650px;
-    height: 750px;
-
-    border: 4px solid orange;
-    top: 10%;
-    position: relative;
-
-  }
-
-
-
-
-  /* watch face */
-
-
-  .marcadores{
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-
-  .marcador{
-    width: 7px;
-    height: 12px;
-
-    display: block;
-    border: 0.2mm solid blue;
-    background: blue;
-    border-radius: 0.8mm;
-    /* border-radius: 50%; */
-
-    position: absolute;
-    top: calc(50% - 6px);
-    left: calc(50% - 0.3mm);
-  }
-
-
-  .marcador.big{
-    width: 1px;
-    height: 14px;
-
-    border: 0.3mm solid red;
-    background: red;
-    top: calc(50% - 7px);
-    left: calc(50% - 0.2mm);
-  }
-
-  .marcador.big > .textOutside{
-    color: black;
-    position: absolute;
-
-    top: 100%;
-    font-size: 3rem;
-    font-weight: 400;
-
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
-
-    text-align: center;
-    /* overflow: hidden; */
-
-    top: calc(-500% - 7px); /* ajusta os numeros da borda -600 */
-    left: calc(50% - 40px); /* ajusta os numeros na horizontal 40*/
-  
-    letter-spacing: 0.2rem  ;
-
-    /* border: 1px solid salmon; */
-  }
-
-
-
-  .marcador.big > .textInside{
-    color: black;
-    position: absolute;
-
-    top: 100%;
-    font-size: 5rem;
-    font-weight: 400;
-
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-
-    text-align: center;
-    
-
-    top: calc(350% - 7px);  /* ajusta os numeros da borda 270 */
-    left: calc(50% - 28px); /* ajusta os numeros na horizontal 50%*/
-
-    letter-spacing: 0.2rem;
-  /* 
-    border: 1px solid red; */
-  }
-
-
-  .circuloInside{
-    position: absolute;
-    display: flex;
-
-    top: 12%;
-    left: 12%;
-
-    border-radius: 50%;
-    align-items: center;
-
-    border: 3px solid blue;
-
-    width: 310px;
-    height: 310px;
-  }
-
-
-
-
-  /* watch hands*/
-
-
-  .seconds,
-  .minutes,
-  .hours{
-    width: 2px;
-    height: 155px;
-    position: absolute;
-
-    top: 50%;
-    left: calc(50% - 1px);
-    border-radius: 0.6mm;
-    transform-origin: 1px 0; 
-  } 
-
-
-  .seconds{
-    width: 2px;
-    height: 283px;
-    transform-origin: 1px 26px; 
-    top: calc(50% - 26px);
-    background: red;
-    z-index: 2;
-  }
-
-
-
-  .hours{
-    height: 158px;
-    z-index: 1;
-  }
-
-
-  .minutes{
-    height: 220px;
-    z-index: 1;
-  }
-
-  .minutes,
-  .hours{
-    background: black;
-  }
-
-
-  .seconds::before{
-    position: absolute;
-    content: "";
-    bottom: -3px;
-    left: 50%;
-    transform: translate(-50%, 0);
-
-    width: 12px;
-    height: calc(100% - 48px);
-    background: red;
-    border-radius: 2rem;
-    
-  }
-
-
-
-
-  .minutes::before,
-  .hours::before {
-    position: absolute;
-    content: "";
-    bottom: -3px;
-    left: 50%;
-    transform: translate(-50%, 0);
-
-    width: 12px;
-    height: calc(100% - 22px);
-    background: black;
-    border-radius: 2rem;
-  }
-
-
-
-  .minutes.dark-mode::before,
-  .hours.dark-mode::before {
-    background: white; 
-  }
-
-
-  .pivot, .pivot::before{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-    width: 16px;
-    height: 16px;
-
-    background: red;
-    
-
-    border-radius: 50%;
-
-    z-index: 2;
-  }
-
-  .pivot::before {
-    content: "";
-    border: 3px solid red;
-    width: 5px;
-    height: 5px;
-  }
-
-
-
-
-
-  /* date */
-
-  .borderDate{
-    width: 15rem;
-    height: 7rem;
-
-    border: 4px solid blue; 
-    background-color: white;
-
-    border-radius: 1rem;
-
-    top: 41%;
-    left: 70%;  
-    position: absolute;
-    z-index: 0;
-  }
-
-  #date{
-    display: flex;
-    align-items: center;
     justify-content: center;
-    
-    padding-top: 0.6rem;
-    font-size: 3.8rem;  
-
-    white-space: nowrap;
+    align-items: center;
   }
 
-  #chronoDisplay{
-    padding-top: 0.8rem;
-    padding-left: 3.2rem;
-    font-size: 3.8rem;  
+  .clockContainer {
+    margin: 6% 1% 0% 1%;
   }
+}
 
 
-
-
-
-  @media(max-width: 1536px){
-    .flex{
-      max-width: 1280px;
-    }
+@media (max-width: 1024px) {
+  .flex {
+    max-width: 768px;
   }
+}
 
-
-  @media(max-width: 1280px){
-    .flex{
-      max-width: 1024px;
-    }
+@media (max-width: 768px) {
+  .flex {
+    max-width: 425px;
   }
-
-
+}

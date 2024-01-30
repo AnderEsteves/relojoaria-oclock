@@ -36,6 +36,10 @@ const engine = {
 
   divClock: document.querySelector(".clock"),
 
+  larguraTela: window.innerWidth,
+
+  textoDentro: document.querySelectorAll(".textInside"),
+
   changeDarkButton: function () {
     let textInside = document.querySelectorAll(".textInside");
     let textOutside = document.querySelectorAll(".textOutside");
@@ -342,18 +346,16 @@ const engine = {
 
       //divClock
       this.divClock.style.top = "45%";
-    } else  {
-      
-      if (state){
+    } else {
+      if (state) {
         document.exitFullscreen();
       }
-      
+
       // Volta ao tamanho original
       this.originalTranslateY = -250;
       this.updateMarcadoresTranslateY();
 
       // circuloInside
-      //let circuloInside = document.querySelector(".circuloInside");
       this.circuloInside.style.width = "310px";
       this.circuloInside.style.height = "310px";
 
@@ -381,7 +383,6 @@ const engine = {
     }
   },
 
-
   updateMarcadoresTranslateY: function () {
     // Atualizar todos os marcadores com o novo valor de translateY
     let marcadores = document.querySelector(".marcadores");
@@ -392,6 +393,67 @@ const engine = {
     });
   },
 
+  checkScreenWidth: function () {
+    if (this.larguraTela <= 1536) {
+      //tamanho relogio
+      this.originalTranslateY = -200;
+      this.updateMarcadoresTranslateY();
+
+      // circuloInside
+      this.circuloInside.style.width = "230px";
+      this.circuloInside.style.height = "230px";
+
+      this.circuloInside.style.top = "22%";
+      this.circuloInside.style.left = "22%";
+
+      //handsClock
+      this.secondHand.style.height = "232px";
+      this.minuteHand.style.height = "180px";
+      this.hourHand.style.height = "158px";
+
+      //textoDentro
+      this.originalTranslateY = -200;
+      fontSize = "3.2rem";
+    } else {
+      //tamanho relogio
+      this.originalTranslateY = -250;
+      this.updateMarcadoresTranslateY();
+
+      // circuloInside
+      this.circuloInside.style.width = "310px";
+      this.circuloInside.style.height = "310px";
+
+      this.circuloInside.style.top = "12%";
+      this.circuloInside.style.left = "12%";
+
+      //handsClock
+      this.secondHand.style.height = "283px";
+      this.minuteHand.style.height = "220px";
+      this.hourHand.style.height = "158px";
+
+      //textoDentro
+      this.originalTranslateY = -250;
+      fontSize = "5rem";
+    }
+
+    this.updateMarcadoresTranslateY();
+
+    // Atualizar o tamanho da fonte
+    let textOutsideElements = document.querySelectorAll(
+      ".marcador.big > .textOutside"
+    );
+    textOutsideElements.forEach((text) => {
+      text.style.fontSize = fontSize;
+    });
+  },
+
+  handleResize: function () {
+    // Atualiza a propriedade larguraTela ao lidar com o evento resize
+    this.larguraTela = window.innerWidth;
+
+    // Chama a função de verificação de largura de tela
+    this.checkScreenWidth();
+  },
 
   start: function () {
     this.createData();
@@ -403,8 +465,13 @@ const engine = {
         this.fullScreen(false);
       }
     });
+
+    // Adiciona um event listener para o evento resize
+    window.addEventListener("resize", () => this.handleResize());
+
+    // Verifica a largura da tela na inicialização
+    //this.checkScreenWidth();
   },
 };
-
 
 engine.start();
