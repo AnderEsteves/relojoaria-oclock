@@ -162,7 +162,7 @@ body {
   position: absolute;
 
   top: 100%;
-  font-size: 5rem;
+  /* font-size: 5rem; */
   font-weight: 400;
 
   width: 50px;
@@ -171,12 +171,16 @@ body {
 
   text-align: center;
 
-  top: calc(350% - 7px); /* ajusta os numeros da borda 270 */
-  left: calc(50% - 28px); /* ajusta os numeros na horizontal 50%*/
+  top: calc(350% - 7px); /* ajusta os numeros da borda 270% */
+  left: calc(50% - 28px); /* ajusta os numeros na horizontal 28px%*/
 
   letter-spacing: 0.2rem;
   /* 
     border: 1px solid red; */
+}
+
+.textInside{
+  font-size: 5rem;
 }
 
 .circuloInside {

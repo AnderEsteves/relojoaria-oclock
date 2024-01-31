@@ -38,7 +38,7 @@ const engine = {
 
   larguraTela: window.innerWidth,
 
-  textoDentro: document.querySelectorAll(".textInside"),
+  fontSize: "1rem", // Define o tamanho inicial da fonte
 
   changeDarkButton: function () {
     let textInside = document.querySelectorAll(".textInside");
@@ -412,8 +412,16 @@ const engine = {
       this.hourHand.style.height = "158px";
 
       //textoDentro
-      this.originalTranslateY = -200;
-      fontSize = "3.2rem";
+      this.fontSize = "4rem";
+
+      // marcador.big > textOutside
+      let textInsideElements = document.querySelectorAll(
+        ".marcador.big > .textInside"
+      );
+      textInsideElements.forEach((text) => {
+        text.style.top = "calc(300% - 7px)";
+        text.style.left = "calc(50% - 24px)";
+      });
     } else {
       //tamanho relogio
       this.originalTranslateY = -250;
@@ -432,19 +440,25 @@ const engine = {
       this.hourHand.style.height = "158px";
 
       //textoDentro
-      this.originalTranslateY = -250;
-      fontSize = "5rem";
+      this.fontSize = "5rem";
+
+      // marcador.big > textOutside
+      let textInsideElements = document.querySelectorAll(
+        ".marcador.big > .textInside"
+      );
+      textInsideElements.forEach((text) => {
+        text.style.top = "calc(350% - 7px)";
+        text.style.left = "calc(50% - 28px)";
+      });
     }
 
-    this.updateMarcadoresTranslateY();
-
-    // Atualizar o tamanho da fonte
-    let textOutsideElements = document.querySelectorAll(
-      ".marcador.big > .textOutside"
-    );
-    textOutsideElements.forEach((text) => {
-      text.style.fontSize = fontSize;
+    // Alterar o tamanho da fonte textInside
+    let textoDentro = document.querySelectorAll(".marcador.big > .textInside");
+    textoDentro.forEach((text) => {
+      text.style.fontSize = this.fontSize;
     });
+
+    this.updateMarcadoresTranslateY();
   },
 
   handleResize: function () {
@@ -459,6 +473,7 @@ const engine = {
     this.createData();
     this.createMarcadores();
     this.startClock();
+    this.checkScreenWidth();
 
     document.addEventListener("fullscreenchange", () => {
       if (!document.fullscreenElement) {
@@ -468,9 +483,6 @@ const engine = {
 
     // Adiciona um event listener para o evento resize
     window.addEventListener("resize", () => this.handleResize());
-
-    // Verifica a largura da tela na inicialização
-    //this.checkScreenWidth();
   },
 };
 
