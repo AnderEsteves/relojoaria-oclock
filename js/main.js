@@ -38,7 +38,11 @@ const engine = {
 
   larguraTela: window.innerWidth,
 
+  dateClock: document.getElementById("date"),
+
   fontSize: "1rem", // Define o tamanho inicial da fonte
+
+  fontSizeOutside: "1rem",
 
   changeDarkButton: function () {
     let textInside = document.querySelectorAll(".textInside");
@@ -395,6 +399,9 @@ const engine = {
 
   checkScreenWidth: function () {
     if (this.larguraTela <= 1536) {
+
+      
+
       //tamanho relogio
       this.originalTranslateY = -200;
       this.updateMarcadoresTranslateY();
@@ -422,7 +429,49 @@ const engine = {
         text.style.top = "calc(300% - 7px)";
         text.style.left = "calc(50% - 24px)";
       });
-    } else {
+
+      //borderDate
+      this.borderDate.style.top = "43%";
+      this.borderDate.style.left = "62%";
+      this.borderDate.style.border = "3px solid blue";
+      this.borderDate.style.width = "13rem";
+      this.borderDate.style.height = "6rem";
+
+      //date
+      this.dateClock.style.fontSize = "3rem";
+
+      //cronometro
+      this.chronoDisplay.style.fontSize = "3rem";
+
+      //ponteiros
+      this.hourHand.style.height = "124px";
+
+    } 
+    
+    if (this.larguraTela <= 640) {
+
+      
+      //tamanho relogio
+      this.originalTranslateY = -150;
+      this.updateMarcadoresTranslateY();
+
+      
+      //borderDate
+      this.borderDate.style.top = "43%";
+      this.borderDate.style.left = "62%";
+      this.borderDate.style.border = "3px solid blue";
+      this.borderDate.style.width = "13rem";
+      this.borderDate.style.height = "6rem";
+
+      //textoDentro
+      this.fontSize = "3rem";
+
+      //textoFora
+      this.fontSizeOutside = "0.1rem";
+
+    } 
+    
+    else {
       //tamanho relogio
       this.originalTranslateY = -250;
       this.updateMarcadoresTranslateY();
@@ -442,7 +491,7 @@ const engine = {
       //textoDentro
       this.fontSize = "5rem";
 
-      // marcador.big > textOutside
+      // marcador.big > textInside
       let textInsideElements = document.querySelectorAll(
         ".marcador.big > .textInside"
       );
@@ -450,6 +499,25 @@ const engine = {
         text.style.top = "calc(350% - 7px)";
         text.style.left = "calc(50% - 28px)";
       });
+
+      //borderDate
+      this.borderDate.style.top = "41%";
+      this.borderDate.style.left = "70%";
+      this.borderDate.style.border = "4px solid blue";
+      this.borderDate.style.width = "15rem";
+      this.borderDate.style.height = "7rem";
+
+      //date
+      this.dateClock.style.fontSize = "3.8rem";
+
+      //cronometro
+      this.chronoDisplay.style.fontSize = "3.8rem";
+
+      //ponteiros
+      this.hourHand.style.height = "158px";
+
+      //textoFora
+      this.fontSizeOutside = "3rem";
     }
 
     // Alterar o tamanho da fonte textInside
@@ -458,13 +526,20 @@ const engine = {
       text.style.fontSize = this.fontSize;
     });
 
+    // Alterar o tamanho da fonte textOutside
+    let textoFora = document.querySelectorAll(".marcador.big > .textOutside");
+    textoFora.forEach((text) => {
+      text.style.fontSizeOutside = this.fontSizeOutside;
+    });
+
     this.updateMarcadoresTranslateY();
   },
 
-  handleResize: function () {
+  screenSize: function () {
     // Atualiza a propriedade larguraTela ao lidar com o evento resize
     this.larguraTela = window.innerWidth;
 
+    console.log(this.larguraTela);
     // Chama a função de verificação de largura de tela
     this.checkScreenWidth();
   },
@@ -482,7 +557,7 @@ const engine = {
     });
 
     // Adiciona um event listener para o evento resize
-    window.addEventListener("resize", () => this.handleResize());
+    window.addEventListener("resize", () => this.screenSize());
   },
 };
 
