@@ -245,7 +245,7 @@ body {
   left: 50%;
   transform: translate(-50%, 0);
 
-  width: 12px;
+  width: var(--largura-before, 12px);
   height: calc(100% - 48px);
   background: red;
   border-radius: 2rem;
@@ -259,16 +259,23 @@ body {
   left: 50%;
   transform: translate(-50%, 0);
 
-  width: 12px;
+  width: var(--largura-before, 12px);
   height: calc(100% - 22px);
   background: black;
   border-radius: 2rem;
 }
 
+/* classe para alterar o before no js dos ponteiros */
+.custom-before::before {
+  width: var(--largura-before, 12px); 
+}
+
+
 .minutes.dark-mode::before,
 .hours.dark-mode::before {
   background: white;
 }
+
 
 .pivot,
 .pivot::before {
