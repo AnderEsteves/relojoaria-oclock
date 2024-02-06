@@ -266,7 +266,7 @@ body {
 }
 
 /* classe para alterar o before no js dos ponteiros */
-.custom-before::before {
+.hands-before::before {
   width: var(--largura-before, 12px); 
 }
 
@@ -416,16 +416,60 @@ body {
 
 @media (max-width: 475px) {
   .flex {
-    max-width: 320px;
+    max-width: 375px;
   }
 
   .information{
-    width: 290px;
+    width: 310px;
     height: 750px;
   }
 
   .clockContainer{
-    width: 290px;
+    width: 310px;
     height: 750px;
   }
+
+  .clock {
+    width: 400px;
+    height: 400px;
+    position: relative;
+  
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    /* border: 4px solid green; */
+  }
+
+  .menuClock {
+    width: 100%;
+    top: 2%;
+    position: relative;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+
+    align-items: center;
+
+    
+  }
+  
+  .menuCronometro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    top: 10%;
+    position: relative;
+
+    
+  }
+
+
 }
+
+
+

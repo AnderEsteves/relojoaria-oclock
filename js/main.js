@@ -44,6 +44,8 @@ const engine = {
 
   fontOutside: "3rem",
 
+  handsSize: document.querySelectorAll(".hands-before"),
+
   changeDarkButton: function () {
     let textInside = document.querySelectorAll(".textInside");
     let textOutside = document.querySelectorAll(".textOutside");
@@ -88,7 +90,7 @@ const engine = {
 
     this.circuloInside.style.borderColor = this.darkButtonStatus
       ? "#39ff14"
-      : "navy";
+      : "blue";
 
     colorBorderDate.style.borderColor = this.darkButtonStatus
       ? "#39ff14"
@@ -166,9 +168,6 @@ const engine = {
   },
 
   resetSecondAndMinuteHands: function () {
-    // this.secondHand = document.querySelector(".seconds");
-    // this.minuteHand = document.querySelector(".minutes");
-
     // Definindo uma transição suave para os ponteiros
     this.secondHand.style.transition = "transform 1s ease-in-out";
     this.minuteHand.style.transition = "transform 1s ease-in-out";
@@ -191,8 +190,14 @@ const engine = {
   },
 
   startChronograph: function () {
+    if (this.intervalIdChrono != null){
+      return;
+    }
+
     this.secondHand.style.transition = "none";
     this.minuteHand.style.transition = "none";
+
+    console.log(this.intervalIdChrono);
 
     this.intervalIdChrono = setInterval(() => {
       this.seconds++;
@@ -213,10 +218,14 @@ const engine = {
 
   stopChronograph: function () {
     clearInterval(this.intervalIdChrono);
+
+    this.intervalIdChrono = null;
   },
 
   resetChronograph: function () {
     clearInterval(this.intervalIdChrono);
+
+    this.intervalIdChrono = null;
 
     // Zera os segundos e minutos
     this.seconds = 0;
@@ -236,6 +245,7 @@ const engine = {
       this.minuteHand.style.transition = "none";
     }, 2000);
   },
+
 
   changetextInside: function () {},
 
@@ -332,7 +342,7 @@ const engine = {
       this.circuloInside.style.top = "-12%";
       this.circuloInside.style.left = "-12%";
 
-      this.circuloInside.style.border = "5px solid blue";
+      this.circuloInside.style.borderWidth = "5px";
 
       //date
       this.borderDate.style.left = "90%";
@@ -366,7 +376,7 @@ const engine = {
       this.circuloInside.style.top = "12%";
       this.circuloInside.style.left = "12%";
 
-      this.circuloInside.style.border = "3px solid blue";
+      this.circuloInside.style.borderWidth = "3px";
 
       //date
       this.borderDate.style.left = "70%";
@@ -398,10 +408,95 @@ const engine = {
   },
 
   checkScreenWidth: function () {
-    console.log("Verificando a largura da tela:", this.larguraTela);
+    //console.log("Verificando a largura da tela:", this.larguraTela);
 
-    if (this.larguraTela <= 640) {
-      console.log("Menor ou igual a 640");
+    if (this.larguraTela <= 475) {
+     
+      // Código para larguras de tela menores ou iguais a 640
+      this.originalTranslateY = -110;
+      this.updateMarcadoresTranslateY();
+      
+      // circuloInside
+      this.circuloInside.style.width = "130px";
+      this.circuloInside.style.height = "130px";
+
+      this.circuloInside.style.top = "34%";
+      this.circuloInside.style.left = "34%";
+
+      this.circuloInside.style.borderWidth = "2.2px";
+
+      //borderDate
+      this.borderDate.style.top = "46%";
+      this.borderDate.style.left = "56%";
+      this.borderDate.style.borderWidth = "2px";
+      this.borderDate.style.borderRadius = "0.5rem"; //new
+      this.borderDate.style.width = "7rem";
+      this.borderDate.style.height = "3rem";
+
+      // marcador.big > textInside
+      let textInsideElements = document.querySelectorAll(
+        ".marcador.big > .textInside"
+      );
+      textInsideElements.forEach((text) => {
+        text.style.top = "calc(150% - 7px)";
+        text.style.left = "calc(50% - 25px)";
+      });
+
+      // marcador.big > textOutside
+      let textOutsideElements = document.querySelectorAll(
+        ".marcador.big > .textOutside"
+      );
+      textOutsideElements.forEach((text) => {
+        text.style.top = "calc(-800% - 7px)"; //new
+        text.style.left = "calc(50% - 40px)";
+      });
+
+
+      //date
+      this.dateClock.style.fontSize = "1.6rem";
+      this.dateClock.style.paddingTop = "0.3rem"; //new
+
+      //cronometro
+      this.chronoDisplay.style.fontSize = "1.6rem";
+      this.chronoDisplay.style.paddingTop = "0.3rem";
+      this.chronoDisplay.style.paddingLeft = "1.5rem";
+
+      //textoDentro
+      this.fontInside = "2rem";
+
+      //textoFora
+      this.fontOutside = "1.4rem";
+
+      //handsClock
+      this.secondHand.style.height = "140px";
+      this.minuteHand.style.height = "96px";
+      this.hourHand.style.height = "66px";
+
+      //marcadores
+      let marcadorElement = document.querySelectorAll(".marcador");
+      marcadorElement.forEach((text) => {
+        text.style.height ="8px";
+        text.style.width = "3px";
+        //text.style.top = "calc(50% - 6px)";
+       // text.style.left = "calc(50% - 0.3mm)";
+      });
+
+      //marcadores 
+      let marcadorBigElement = document.querySelectorAll(".marcador.big");
+      marcadorBigElement.forEach((text) => {
+        text.style.width = "1px";
+      });
+
+     
+
+      //lagrgura dos ponteiros
+      this.handsSize.forEach(function (elemento) {
+        elemento.style.setProperty("--largura-before", "6px");
+      });
+
+
+    } else if (this.larguraTela <= 640) {
+      //console.log("Menor ou igual a 640");
 
       // circuloInside
       this.circuloInside.style.width = "180px";
@@ -410,7 +505,7 @@ const engine = {
       this.circuloInside.style.top = "28%";
       this.circuloInside.style.left = "28%";
 
-      this.circuloInside.style.border = "2.2px solid blue";
+      this.circuloInside.style.borderWidth = "2.2px";
 
       // Código para larguras de tela menores ou iguais a 640
       this.originalTranslateY = -150;
@@ -419,7 +514,7 @@ const engine = {
       //borderDate
       this.borderDate.style.top = "43%";
       this.borderDate.style.left = "54%";
-      this.borderDate.style.border = "2px solid blue";
+      this.borderDate.style.borderWidth = "2px";
       this.borderDate.style.width = "12rem";
       this.borderDate.style.height = "5rem";
 
@@ -461,37 +556,14 @@ const engine = {
         text.style.width = "1px";
       });
 
-
-      var elementos = document.querySelectorAll(".custom-before");
-
-      elementos.forEach(function (elemento) {
+      //lagrgura dos ponteiros
+      this.handsSize.forEach(function (elemento) {
         elemento.style.setProperty("--largura-before", "8px");
       });
     }
 
-    // else if (this.larguraTela <= 768) {
-    //   console.log("Menor ou igual a 768");
-
-    //   // Código para larguras de tela menores ou iguais a 768, mas maiores que 640
-    //   this.originalTranslateY = -200;
-    //   this.updateMarcadoresTranslateY();
-
-    //     //borderDate
-    //     this.borderDate.style.top = "43%";
-    //     this.borderDate.style.left = "62%";
-    //     this.borderDate.style.border = "3px solid yellow";
-    //     this.borderDate.style.width = "13rem";
-    //     this.borderDate.style.height = "6rem";
-
-    //     //textoDentro
-    //     this.fontSize = "4rem";
-
-    //     //textoFora
-    //     this.fontSizeOutside = "1rem";
-
-    // }
     else if (this.larguraTela <= 1536) {
-      console.log("Menor ou igual a 1536");
+     // console.log("Menor ou igual a 1536");
 
       // Código para larguras de tela menores ou iguais a 1536, mas maiores que 768
       this.originalTranslateY = -200;
@@ -524,7 +596,7 @@ const engine = {
       //borderDate
       this.borderDate.style.top = "43%";
       this.borderDate.style.left = "62%";
-      this.borderDate.style.border = "3px solid blue";
+      this.borderDate.style.borderWidth = "3px";
       this.borderDate.style.width = "13rem";
       this.borderDate.style.height = "6rem";
 
@@ -554,6 +626,8 @@ const engine = {
       this.circuloInside.style.top = "12%";
       this.circuloInside.style.left = "12%";
 
+      this.circuloInside.style.borderWidth = "3px";
+
       //handsClock
       this.secondHand.style.height = "283px";
       this.minuteHand.style.height = "220px";
@@ -578,7 +652,7 @@ const engine = {
       //borderDate
       this.borderDate.style.top = "41%";
       this.borderDate.style.left = "70%";
-      this.borderDate.style.border = "4px solid blue";
+      this.borderDate.style.borderWidth = "4px";
       this.borderDate.style.width = "15rem";
       this.borderDate.style.height = "7rem";
 
@@ -591,15 +665,12 @@ const engine = {
       //ponteiros
       this.hourHand.style.height = "158px";
 
-      var elementos = document.querySelectorAll(".custom-before");
-
-      elementos.forEach(function (elemento) {
+      // //lagrgura dos ponteiros
+      this.handsSize.forEach(function (elemento) {
         elemento.style.setProperty("--largura-before", "12px");
       });
     }
 
-    // O restante do código comum independente da largura da tela
-    // ...
 
     // Alterar o tamanho da fonte textInside
     let textoDentro = document.querySelectorAll(".marcador.big > .textInside");
@@ -616,170 +687,12 @@ const engine = {
     this.updateMarcadoresTranslateY();
   },
 
-  // checkScreenWidth: function () {
-  //   if (this.larguraTela <= 1536) {
-
-  //     console.log("1 if");
-
-  //     //tamanho relogio
-  //     this.originalTranslateY = -200;
-  //     this.updateMarcadoresTranslateY();
-
-  //     // circuloInside
-  //     this.circuloInside.style.width = "230px";
-  //     this.circuloInside.style.height = "230px";
-
-  //     this.circuloInside.style.top = "22%";
-  //     this.circuloInside.style.left = "22%";
-
-  //     //handsClock
-  //     this.secondHand.style.height = "232px";
-  //     this.minuteHand.style.height = "180px";
-  //     this.hourHand.style.height = "158px";
-
-  //     //textoDentro
-  //     this.fontSize = "4rem";
-
-  //     // marcador.big > textInside
-  //     let textInsideElements = document.querySelectorAll(
-  //       ".marcador.big > .textInside"
-  //     );
-  //     textInsideElements.forEach((text) => {
-  //       text.style.top = "calc(300% - 7px)";
-  //       text.style.left = "calc(50% - 24px)";
-  //     });
-
-  //     //borderDate
-  //     this.borderDate.style.top = "43%";
-  //     this.borderDate.style.left = "62%";
-  //     this.borderDate.style.border = "3px solid blue";
-  //     this.borderDate.style.width = "13rem";
-  //     this.borderDate.style.height = "6rem";
-
-  //     //date
-  //     this.dateClock.style.fontSize = "3rem";
-
-  //     //cronometro
-  //     this.chronoDisplay.style.fontSize = "3rem";
-
-  //     //ponteiros
-  //     this.hourHand.style.height = "124px";
-
-  //   }
-
-  //    if (this.larguraTela <= 768) {
-  //     console.log("2 if");
-
-  //     //tamanho relogio
-  //     this.originalTranslateY = -170;
-  //     this.updateMarcadoresTranslateY();
-
-  //     //borderDate
-  //     this.borderDate.style.top = "43%";
-  //     this.borderDate.style.left = "62%";
-  //     this.borderDate.style.border = "3px solid yellow";
-  //     this.borderDate.style.width = "13rem";
-  //     this.borderDate.style.height = "6rem";
-
-  //     //textoDentro
-  //     this.fontSize = "3rem";
-
-  //     //textoFora
-  //     this.fontSizeOutside = "0.1rem";
-
-  //   }
-
-  //   if (this.larguraTela <= 640) {
-
-  //     //tamanho relogio
-  //     this.originalTranslateY = -150;
-  //     this.updateMarcadoresTranslateY();
-
-  //     //borderDate
-  //     this.borderDate.style.top = "43%";
-  //     this.borderDate.style.left = "62%";
-  //     this.borderDate.style.border = "3px solid red";
-  //     this.borderDate.style.width = "13rem";
-  //     this.borderDate.style.height = "6rem";
-
-  //     //textoDentro
-  //     this.fontSize = "3rem";
-
-  //     //textoFora
-  //     this.fontSizeOutside = "0.1rem";
-
-  //   }
-
-  //   else {
-
-  //     //tamanho relogio
-  //     this.originalTranslateY = -250;
-  //     this.updateMarcadoresTranslateY();
-
-  //     // circuloInside
-  //     this.circuloInside.style.width = "310px";
-  //     this.circuloInside.style.height = "310px";
-
-  //     this.circuloInside.style.top = "12%";
-  //     this.circuloInside.style.left = "12%";
-
-  //     //handsClock
-  //     this.secondHand.style.height = "283px";
-  //     this.minuteHand.style.height = "220px";
-  //     this.hourHand.style.height = "158px";
-
-  //     //textoDentro
-  //     this.fontSize = "5rem";
-
-  //     // marcador.big > textInside
-  //     let textInsideElements = document.querySelectorAll(
-  //       ".marcador.big > .textInside"
-  //     );
-  //     textInsideElements.forEach((text) => {
-  //       text.style.top = "calc(350% - 7px)";
-  //       text.style.left = "calc(50% - 28px)";
-  //     });
-
-  //     //borderDate
-  //     this.borderDate.style.top = "41%";
-  //     this.borderDate.style.left = "70%";
-  //     this.borderDate.style.border = "4px solid blue";
-  //     this.borderDate.style.width = "15rem";
-  //     this.borderDate.style.height = "7rem";
-
-  //     //date
-  //     this.dateClock.style.fontSize = "3.8rem";
-
-  //     //cronometro
-  //     this.chronoDisplay.style.fontSize = "3.8rem";
-
-  //     //ponteiros
-  //     this.hourHand.style.height = "158px";
-
-  //     //textoFora
-  //     this.fontSizeOutside = "3rem";
-  //   }
-
-  //   // Alterar o tamanho da fonte textInside
-  //   let textoDentro = document.querySelectorAll(".marcador.big > .textInside");
-  //   textoDentro.forEach((text) => {
-  //     text.style.fontSize = this.fontSize;
-  //   });
-
-  //   // Alterar o tamanho da fonte textOutside
-  //   let textoFora = document.querySelectorAll(".marcador.big > .textOutside");
-  //   textoFora.forEach((text) => {
-  //     text.style.fontSizeOutside = this.fontSizeOutside;
-  //   });
-
-  //   this.updateMarcadoresTranslateY();
-  // },
-
+ 
   screenSize: function () {
     // Atualiza a propriedade larguraTela ao lidar com o evento resize
     this.larguraTela = window.innerWidth;
 
-    console.log(this.larguraTela);
+    //console.log(this.larguraTela);
     // Chama a função de verificação de largura de tela
     this.checkScreenWidth();
   },
