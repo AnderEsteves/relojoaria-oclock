@@ -190,7 +190,7 @@ const engine = {
   },
 
   startChronograph: function () {
-    if (this.intervalIdChrono != null){
+    if (this.intervalIdChrono != null) {
       return;
     }
 
@@ -245,7 +245,6 @@ const engine = {
       this.minuteHand.style.transition = "none";
     }, 2000);
   },
-
 
   changetextInside: function () {},
 
@@ -411,11 +410,10 @@ const engine = {
     //console.log("Verificando a largura da tela:", this.larguraTela);
 
     if (this.larguraTela <= 475) {
-     
-      // Código para larguras de tela menores ou iguais a 640
+      //tamanho do relogio
       this.originalTranslateY = -110;
       this.updateMarcadoresTranslateY();
-      
+
       // circuloInside
       this.circuloInside.style.width = "130px";
       this.circuloInside.style.height = "130px";
@@ -451,7 +449,6 @@ const engine = {
         text.style.left = "calc(50% - 40px)";
       });
 
-
       //date
       this.dateClock.style.fontSize = "1.6rem";
       this.dateClock.style.paddingTop = "0.3rem"; //new
@@ -475,28 +472,24 @@ const engine = {
       //marcadores
       let marcadorElement = document.querySelectorAll(".marcador");
       marcadorElement.forEach((text) => {
-        text.style.height ="8px";
+        text.style.height = "8px";
         text.style.width = "3px";
-        //text.style.top = "calc(50% - 6px)";
-       // text.style.left = "calc(50% - 0.3mm)";
       });
 
-      //marcadores 
+      //marcadores
       let marcadorBigElement = document.querySelectorAll(".marcador.big");
       marcadorBigElement.forEach((text) => {
         text.style.width = "1px";
       });
 
-     
-
       //lagrgura dos ponteiros
       this.handsSize.forEach(function (elemento) {
         elemento.style.setProperty("--largura-before", "6px");
       });
-
-
     } else if (this.larguraTela <= 640) {
-      //console.log("Menor ou igual a 640");
+      //tamanho do relogio
+      this.originalTranslateY = -150;
+      this.updateMarcadoresTranslateY();
 
       // circuloInside
       this.circuloInside.style.width = "180px";
@@ -507,16 +500,21 @@ const engine = {
 
       this.circuloInside.style.borderWidth = "2.2px";
 
-      // Código para larguras de tela menores ou iguais a 640
-      this.originalTranslateY = -150;
-      this.updateMarcadoresTranslateY();
-
       //borderDate
       this.borderDate.style.top = "43%";
       this.borderDate.style.left = "54%";
       this.borderDate.style.borderWidth = "2px";
       this.borderDate.style.width = "12rem";
       this.borderDate.style.height = "5rem";
+
+      // marcador.big > textOutside
+      let textOutsideElements = document.querySelectorAll(
+        ".marcador.big > .textOutside"
+      );
+      textOutsideElements.forEach((text) => {
+        text.style.top = "calc(-500% - 7px)"; //new
+        text.style.left = "calc(50% - 40px)";
+      });
 
       // marcador.big > textInside
       let textInsideElements = document.querySelectorAll(
@@ -560,12 +558,8 @@ const engine = {
       this.handsSize.forEach(function (elemento) {
         elemento.style.setProperty("--largura-before", "8px");
       });
-    }
-
-    else if (this.larguraTela <= 1536) {
-     // console.log("Menor ou igual a 1536");
-
-      // Código para larguras de tela menores ou iguais a 1536, mas maiores que 768
+    } else if (this.larguraTela <= 1536) {
+      //tamanho do relogio
       this.originalTranslateY = -200;
       this.updateMarcadoresTranslateY();
 
@@ -609,13 +603,7 @@ const engine = {
       //ponteiros
       this.hourHand.style.height = "124px";
     } else {
-      console.log("Maior que 1536");
-
-      // Código para larguras de tela maiores que 1536
-      this.originalTranslateY = -250;
-      this.updateMarcadoresTranslateY();
-
-      //tamanho relogio
+      //tamanho do relogio
       this.originalTranslateY = -250;
       this.updateMarcadoresTranslateY();
 
@@ -637,7 +625,6 @@ const engine = {
       this.fontInside = "5rem";
 
       //textoFora
-
       this.fontOutside = "3rem";
 
       // marcador.big > textInside
@@ -671,7 +658,6 @@ const engine = {
       });
     }
 
-
     // Alterar o tamanho da fonte textInside
     let textoDentro = document.querySelectorAll(".marcador.big > .textInside");
     textoDentro.forEach((text) => {
@@ -687,7 +673,6 @@ const engine = {
     this.updateMarcadoresTranslateY();
   },
 
- 
   screenSize: function () {
     // Atualiza a propriedade larguraTela ao lidar com o evento resize
     this.larguraTela = window.innerWidth;
