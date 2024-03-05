@@ -342,39 +342,15 @@ body {
 /* --------------  CONFIGURAÇÕES DA PÁGINA ----------*/
 
 
-
-
 .container{
-  padding: 70px 0;
+  max-width: 1536px;
+  
 }
 
-p, li{
-  color: #444;
-  font-size: 1rem;
+.nav-link {
+  font-size: 3rem;
+ 
 }
-
-
-
-header, .navbar{
-  background-color: #455452;
-}
-
-.nav-container{
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.navbar-links a{
-  color:#fff;
-}
-
-
-.navbar-expand-lg .navbar-nav .nav-link{
- padding: 1rem .8rem;
-}
-
-
-
 
 
 

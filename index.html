@@ -1,90 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/main.css">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-  <script defer src="./js/main.js"></script>
-  <title>Relojoaria O'clock</title>
-</head>
-<body>
-  <header class="center flex">
-    <div class="container" id="nav-container">
-      <nav class="navbar navbar-expand-lg fixed-top">
-        <a href="#" class="navbar-brand">
-          <img id="logo" src="" alt="" class="">
-        </a>
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-links"
-         arial-controls="navbar-links" arial-expanded="false" arial-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbar-links"></div>
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" id="home-menu">Home</a>
-          <a class="nav-item nav-link" id="watch-model-menu">Modelos de Relógios</a>
-          <a class="nav-item nav-link" id="services-menu">Serviços</a>
-          <a class="nav-item nav-link" id="aboutus-menu">Sobre nós</a>
-          <a class="nav-item nav-link" id="contact-menu">Contato</a>
-          <a class="nav-item nav-link" id="localization-menu">Localização</a>
-        </div>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Relojoaria O'clock</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <script defer src="./js/main.js"></script>
+  </head>
+  <body>
+    <header class="center flex ">
+      <nav class="navbar container bg-primary">
+        <ul class="navbar-nav flex-row">
+          <li class="nav-item text-center ">
+            <a class="nav-link" href="#">Serviços</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Serviços</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sobre nós</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contato</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Localização</a>
+          </li>
+        </ul>
       </nav>
-
-
-    </div>
-  </header>  
-  
-
-  <section class="center flex">
-
-
-    <div class="information">
-      <h1>lore</h1>
-    </div>
-
-
+    </header>  
     
-
-    <div class="clockContainer">
-
-      <div class="clock">
-        <div class="circuloInside"></div>
   
-        <div class="minutes hands-before"></div>
-        <div class="seconds hands-before"></div>
-        <div class="hours hands-before"></div>
-        <div class="pivot"></div>
-        <div class="marcadores"></div>
+    <section class=" center flex">
   
-        <div class="borderDate">
-          <div id="date"></div>
-          <div id="chronoDisplay"></div>
-        </div>  
-
-        
-        <div class="menuClock">
-          <button onclick="engine.changeMode()" id="modeButton">Modo cronografo</button>
-          <button onclick="engine.fullScreen()" id="fullscreenButton">Tela Cheia</button>
-          <button onclick="engine.changeDarkButton()" id="darkButton">Modo Escuro</button>
-   
-        </div>
-
-        <div class="menuCronometro">
-          <button onclick="engine.startChronograph()" id="start"><a>Iniciar</a></button>
-          <button onclick="engine.stopChronograph()" id="stop">Parar</button>
-          <button onclick="engine.resetChronograph()" id="reset">Zerar</button>
-        </div>
-
+  
+      <div class="information">
+        <h1>lore</h1>
       </div>
 
-    </div>
+      <div class="clockContainer">
+  
+        <div class="clock">
+          <div class="circuloInside"></div>
+    
+          <div class="minutes hands-before"></div>
+          <div class="seconds hands-before"></div>
+          <div class="hours hands-before"></div>
+          <div class="pivot"></div>
+          <div class="marcadores"></div>
+    
+          <div class="borderDate">
+            <div id="date"></div>
+            <div id="chronoDisplay"></div>
+          </div>  
+  
+          
+          <div class="menuClock">
+            <button onclick="engine.changeMode()" id="modeButton">Modo cronografo</button>
+            <button onclick="engine.fullScreen()" id="fullscreenButton">Tela Cheia</button>
+            <button onclick="engine.changeDarkButton()" id="darkButton">Modo Escuro</button>
+     
+          </div>
+  
+          <div class="menuCronometro">
+            <button onclick="engine.startChronograph()" id="start"><a>Iniciar</a></button>
+            <button onclick="engine.stopChronograph()" id="stop">Parar</button>
+            <button onclick="engine.resetChronograph()" id="reset">Zerar</button>
+          </div>
+  
+        </div>
+  
+      </div>
+  
+  
+    </section>
 
-
-  </section>
-
-
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
 </html>
+
+
+
+
+
+
+
