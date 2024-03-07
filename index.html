@@ -10,25 +10,13 @@
   </head>
   <body>
     <header class="center flex ">
-      <nav class="navbar container bg-primary">
-        <ul class="navbar-nav flex-row">
-          <li class="nav-item text-center ">
-            <a class="nav-link" href="#">Serviços</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Serviços</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sobre nós</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contato</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Localização</a>
-          </li>
-        </ul>
-      </nav>
+      <nav class="nav nav-justified nav-pills container border p-4">
+        <a href="#" class="nav-link nav-item">Serviços</a>
+        <a href="#" class="nav-link nav-item">Serviços</a>
+        <a href="#" class="nav-link nav-item">Sobre nós</a>
+        <a href="#" class="nav-link nav-item">Contato</a>
+        <a href="#" class="nav-link nav-item">Localização</a>
+     </nav>
     </header>  
     
   
@@ -57,7 +45,7 @@
   
           
           <div class="menuClock">
-            <button onclick="engine.changeMode()" id="modeButton">Modo cronografo</button>
+            <button class="btn btn-primary btn-xl" onclick="engine.changeMode()" id="modeButton">Modo cronografo</button>
             <button onclick="engine.fullScreen()" id="fullscreenButton">Tela Cheia</button>
             <button onclick="engine.changeDarkButton()" id="darkButton">Modo Escuro</button>
      
