@@ -2,16 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 100%;
 }
 
-html {
+
+html{
   font-size: 62.5%;
 }
 
-body {
-  /* background-color: aqua; */
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-}
 
 #start,
 #stop,
@@ -364,10 +362,13 @@ body {
 
 
 
+
 @media (max-width: 1536px) {
   .flex {
     max-width: 1280px;
   }
+
+
 
   .center {
     max-width: 100%;

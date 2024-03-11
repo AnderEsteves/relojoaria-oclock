@@ -147,6 +147,7 @@ const engine = {
         marcador.appendChild(textInside);
       }
     }
+
   },
 
   startClock: function () {
