@@ -701,3 +701,27 @@ const engine = {
 };
 
 engine.start();
+
+
+function menuShow(){
+  let menuMobile = document.querySelector('.mobile-menu');
+  let header = document.querySelector('header');
+  
+  if(menuMobile.classList.contains('open')){
+    menuMobile.classList.remove('open');
+    header.classList.remove('open');
+    document.querySelector('.icon').src = "img/hamburger-menu.svg";
+  }else{
+    menuMobile.classList.add('open');
+    header.classList.add('open');
+    document.querySelector('.icon').src = "img/close-button.svg" ;
+  }
+}
+
+
+
+
+
+
+
+
