@@ -47,17 +47,17 @@
 
   
     <section class=" center flex">
-      <div class="information text">
-        <div class="d-flex flex-column gap-5 text-center px-3">
-          <p class="h1 py-5">Cuidando do Tempo com Precisão e Maestria</p>
-          <p class="h2 py-5"> Cada segundo conta, e nós garantimos que os seus sejam sempre memoráveis e cheios de personalidade!</p>
-          <p class="h1">Descubra mais sobre nós e como cuidamos do seu tempo.</p>
+      <div class="information">
+        <div class="information-text">
+          <div><h1>Cuidando do Tempo com Precisão e Maestria</h1></div>
+          <div><h2>Cada segundo conta, e nós garantimos que os seus sejam sempre memoráveis e cheios de personalidade!</h2></div>
+          <div><p>Descubra mais sobre nós e como cuidamos do seu tempo.</p></div>
         </div>        
       </div>
 
       <div class="clockContainer">
-  
         <div class="clock">
+
           <div class="circuloInside"></div>
     
           <div class="minutes hands-before"></div>
@@ -73,16 +73,16 @@
   
 
           <div class="menuClock">
-            <button onclick="engine.changeMode()" id="modeButton" class="btn btn-primary btn-lg">Modo cronógrafo</button>
-            <button onclick="engine.fullScreen()" id="fullscreenButton" class="btn btn-primary">Tela Cheia</button>
-            <button onclick="engine.changeDarkButton()" id="darkButton" class="btn btn-primary">Modo Escuro</button>
+            <button onclick="engine.changeMode()" id="modeButton"><a>CRONÔMETRO</a></button>
+            <button onclick="engine.fullScreen()" id="fullscreenButton" ><a>TELA CHEIA</a></button>
+            <button onclick="engine.changeDarkButton()" id="darkButton"><a>MODO ESCURO</a></button>
           </div>
 
   
           <div class="menuCronometro">
-            <button onclick="engine.startChronograph()" id="start"  class="btn btn-primary btn-lg"><a>Iniciar</a></button>
-            <button onclick="engine.stopChronograph()" id="stop"  class="btn btn-primary btn-lg">Parar</button>
-            <button onclick="engine.resetChronograph()" id="reset"  class="btn btn-primary btn-lg">Zerar</button>
+            <button onclick="engine.startChronograph()" id="start"><a><a>INICIAR</a></a></button>
+            <button onclick="engine.stopChronograph()" id="stop"><a>PARAR</a></button>
+            <button onclick="engine.resetChronograph()" id="reset"><a>ZERAR</a></button>
           </div>
   
         </div>

@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* --cor-bg-box: #fafafa; */
 
+:root{
+  --cor-primaria: blue;
+  --cor-bg-box: #dde5f1;
+  --cor-button-transition:  #ff3300;
+}
 
 html{
   font-size: 62.5%;
@@ -13,8 +20,7 @@ html{
 
 body {
   font-family: 'Poppins', sans-serif; 
-
-  overflow-x: hidden;
+  background-color: var(--cor-bg-box);
 }
 
 
@@ -32,7 +38,7 @@ body {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 
-  border: 3px solid purple;
+  /* border: 3px solid purple; */
 }
 
 .center {
@@ -43,56 +49,88 @@ body {
   flex-direction: row;
 
   justify-content: space-around;
-  
-
-  /* border: 4px solid red; */
-  /* background-color: black; */
 }
 
 .menuClock {
-  width: 100%;
+  width: auto;
   top: 35%;
   position: relative;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  padding: 0rem 1rem 0rem 1rem;
 }
 
 .menuClock button {
-  font-size: 1rem;
+  font-size: 1.4rem;
+  border: none;
+  color: #fff;
+  background-color: blue;
+  border-radius: 10px;
+  width: auto;
+  height: 4rem;
+  font-weight: 600;
+  padding: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
 }
+
+.menuClock button:hover{
+  background-color: var(--cor-button-transition);
+}
+
 
 
 .menuCronometro button {
-  font-size: 1rem;
+  font-size: 1.4rem;
+  border: none;
+  color: #fff;
+  background-color: blue;
+  border-radius: 10px;
+  width: auto;
+  height: 4rem;
+  font-weight: 600;
+  padding: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
 }
+
 
 
 .menuCronometro {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   width: 100%;
   top: 40%;
   position: relative;
 }
 
+.menuCronometro button:hover{
+  background-color: var(--cor-button-transition);
+}
+
+
+
+
 
 .clockContainer {
-  border: 4px solid orange;
+  /* border: 4px solid orange; */
   position: relative;
 
   margin: 0% 1% 0% 1%;
-
+  border-radius: 20px;
+  
   width: 650px;
   height: 800px;
 
   top: 10%;
   overflow: hidden;
 
-  background-color: white;
+  background-color: #fff;
+ 
 }
 
 .clock {
@@ -111,11 +149,43 @@ body {
   width: 650px;
   height: 800px;
 
-  border: 4px solid orange;
+  /* border: 4px solid orange; */
   top: 10%;
   position: relative;
 
   margin: 0% 1% 0% 1%;
+
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.information-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-around; */
+  height: 100%;
+}
+
+.information-text h1{
+  font-size: 4rem;
+  text-align: start;
+  padding: 6rem 3rem 0rem 3rem;
+  font-weight: 600;
+}
+
+.information-text h2{
+  font-size: 2.4rem;
+  text-align: start;
+  padding: 5rem 4rem 0rem 4rem;
+  font-weight: 400;
+}
+
+.information-text p{
+  font-size: 2.2rem;
+  text-align: center;
+  padding: 10rem 4rem 0rem 4rem;
+  font-weight: 400;
 }
 
 /* watch face */
@@ -179,8 +249,7 @@ body {
   position: absolute;
 
   top: 100%;
-  /* font-size: 5rem; */
-  font-weight: 400;
+  font-weight: 600;
 
   width: 50px;
   height: 50px;
@@ -342,7 +411,7 @@ body {
   justify-content: center;
 
   padding-top: 0.6rem;
-  font-size: 3.8rem;
+  font-size: 3rem !important;
 
   white-space: nowrap;
 }
@@ -350,7 +419,7 @@ body {
 #chronoDisplay {
   padding-top: 0.8rem;
   padding-left: 3.2rem;
-  font-size: 3.8rem;
+  font-size: 3rem !important;
 }
 
 
@@ -367,7 +436,7 @@ body {
 
 header{
   background: blue;
-  box-shadow: 0px 3px 10px;
+  box-shadow: 0px 1px 10px;
   margin-bottom: 2rem;
 }
 
@@ -377,7 +446,6 @@ header{
   padding: 2.5rem 20rem;
 
 }
-
 
 
 .logo h1{
@@ -411,7 +479,7 @@ header{
 }
 
 .nav-link:hover{
- color: red;
+ color: var(--cor-button-transition);
 }
 
 
@@ -423,6 +491,15 @@ header{
 .mobile-menu{
   display: none;
 }
+
+
+
+/* button */
+
+
+
+
+
 
 
 
@@ -450,6 +527,15 @@ header{
     /* border: 4px solid red; */
     /* background-color: black; */
   }
+
+  #date {
+    font-size: 2.6rem !important;
+  }
+  
+  #chronoDisplay {
+    font-size: 2.6rem !important;
+  }
+  
 }
 
 @media (max-width: 1280px) {
@@ -563,6 +649,14 @@ header{
     width: 455px;
     height: 750px;
   }
+
+  #date {
+    font-size: 2.2rem !important;
+  }
+  
+  #chronoDisplay {
+    font-size: 2.2rem !important;
+  }
 }
 
 @media (max-width: 475px) {
@@ -617,6 +711,14 @@ header{
     position: relative;
 
     
+  }
+
+  #date {
+    font-size: 1.4rem !important;
+  }
+  
+  #chronoDisplay {
+    font-size: 1.4rem !important;
   }
 
 

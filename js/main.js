@@ -224,7 +224,7 @@ const engine = {
   },
 
   resetChronograph: function () {
-    clearInterval(this.intervalIdChrono);
+    clearInterval(this.intervalIdChrono); 
 
     this.intervalIdChrono = null;
 
@@ -269,7 +269,7 @@ const engine = {
     // Verificar se o relógio está em execução para parar ou iniciar conforme necessário
     if (this.modeChanged) {
       this.startClock();
-      modeButton.innerHTML = "Modo cronógrafo";
+      modeButton.innerHTML = "CRONÔMETRO";
 
       // Ocultar botões no modo cronógrafo
       this.startButton.style.display = "none";
@@ -293,7 +293,7 @@ const engine = {
       this.resetSecondAndMinuteHands();
       this.changetextInside();
 
-      modeButton.innerHTML = "Modo relógio";
+      modeButton.innerHTML = "RELÓGIO";
 
       // Restaurar posição do date
       dateElement.style.position = "absolute";
