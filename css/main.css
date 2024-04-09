@@ -38,7 +38,7 @@ body {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 
-  /* border: 3px solid purple; */
+  border: 1px solid purple;
 }
 
 .center {
@@ -49,6 +49,8 @@ body {
   flex-direction: row;
 
   justify-content: space-around;
+
+  border: 1px solid orange;
 }
 
 .menuClock {
@@ -58,9 +60,11 @@ body {
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 
   padding: 0rem 1rem 0rem 1rem;
+
+  
 }
 
 .menuClock button {
@@ -75,12 +79,25 @@ body {
   padding: 1rem;
   cursor: pointer;
   transition: color 0.3s;
+
+  
 }
 
 .menuClock button:hover{
   background-color: var(--cor-button-transition);
 }
 
+
+.menuCronometro {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  top: 40%;
+  position: relative;
+}
+
+.menuCronometro button 
 
 
 .menuCronometro button {
@@ -98,15 +115,6 @@ body {
 }
 
 
-
-.menuCronometro {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  top: 40%;
-  position: relative;
-}
 
 .menuCronometro button:hover{
   background-color: var(--cor-button-transition);
@@ -163,28 +171,34 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-around; */
   height: 100%;
 }
 
 .information-text h1{
-  font-size: 4rem;
+  font-size: 5.8rem;
   text-align: start;
-  padding: 6rem 3rem 0rem 3rem;
+  padding: 6rem 2rem 0rem 2rem;
   font-weight: 600;
+  line-height: 6rem;
 }
 
 .information-text h2{
   font-size: 2.4rem;
   text-align: start;
-  padding: 5rem 4rem 0rem 4rem;
+  padding: 4rem 2rem 0rem 2rem;
   font-weight: 400;
+}
+
+.information-text h3{
+  width: 400px;
+  margin-top: 26rem;
+  border-top: 1px solid #0D0DFF;
 }
 
 .information-text p{
   font-size: 2.2rem;
   text-align: center;
-  padding: 10rem 4rem 0rem 4rem;
+  padding: 2rem 4rem 0rem 4rem;
   font-weight: 400;
 }
 
@@ -494,15 +508,66 @@ header{
 
 
 
-/* button */
+/* section cads*/
+
+
+.cards-container{
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  margin: 0px auto;
+  flex-wrap: wrap;
+
+  
+}
+
+.card{
+  display: flex; 
+  flex-direction: column; 
+  flex: 0 0 calc(33.33% - 30px);
+  margin: 0px 15px 30px;
+  border-radius: 20px;
+  background-color: white;
+  overflow: hidden;
+  width: 100px;
+}
 
 
 
+.card img{
+  width: 100%;
+  height: auto;
+  padding: 20px;
+}
+
+.content{
+  padding: 20px;
+  color: white;
+  background-color: var(--cor-primaria);
+}
+
+.content h2{
+  font-size: 2rem;
+  text-align: center;
+}
 
 
 
+.section-cards{
+  display: flex;
+  flex-direction: column;
+}
 
+.title-section-cards{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.title-section-cards p{
+  font-size: 3rem;
+  margin: 2.6rem 0rem 2.6rem 0rem;
+}
 
 
 
@@ -515,17 +580,7 @@ header{
 
 
   .center {
-    max-width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: row;
-
-    justify-content: space-around;
-    background-color: rgb(255, 255, 255);
-
-    /* border: 4px solid red; */
-    /* background-color: black; */
+    gap:4rem
   }
 
   #date {
@@ -546,7 +601,7 @@ header{
   .center {
     width: 100%;
     height: auto;
-    flex-direction: column;
+    flex-direction: column-reverse;
 
     justify-content: center;
     align-items: center;
@@ -559,6 +614,19 @@ header{
   .nav-bar{
     padding: 2.5rem 8rem;
   }
+
+  .cards-container{
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card{
+    width: 60%;
+  }
+
+
 }
 
 
@@ -710,6 +778,7 @@ header{
     top: 10%;
     position: relative;
 
+    
     
   }
 
