@@ -97,7 +97,7 @@ body {
   position: relative;
 }
 
-.menuCronometro button 
+
 
 
 .menuCronometro button {
@@ -559,14 +559,64 @@ header{
 }
 
 .title-section-cards{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
 .title-section-cards p{
   font-size: 3rem;
   margin: 2.6rem 0rem 2.6rem 0rem;
+}
+
+
+/* section services */
+
+.section-services{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+.title-services-section p{
+  font-size: 3rem;
+ 
+  text-align: center;
+  margin: 2.6rem 35rem 2.6rem 35rem;
+}
+
+.title-services-section{
+  text-align: center;
+}
+
+.services-cards{
+  display: flex;
+  flex-direction: column;
+  margin: 0rem 15rem 0rem 25rem ;
+  gap: 3rem;
+}
+
+.text-card{
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 20px;
+  transition: color 0.3s;
+}
+
+
+.text-card:hover{
+  background-color: white;
+  color: blue;
+}
+
+.text-card h2{
+  font-size: 3rem;
+}
+
+.text-card p{
+  font-size: 2.4rem;
 }
 
 
@@ -576,8 +626,6 @@ header{
   .flex {
     max-width: 1280px;
   }
-
-
 
   .center {
     gap:4rem
@@ -601,10 +649,12 @@ header{
   .center {
     width: 100%;
     height: auto;
-    flex-direction: column-reverse;
-
     justify-content: center;
     align-items: center;
+  }
+
+  .section-clock{
+    flex-direction: column-reverse;
   }
 
   .clockContainer {
@@ -684,6 +734,11 @@ header{
   .logo{
     margin-top: 1.6rem;
   }
+
+  .title-section-cards p{
+    font-size: 2.2rem;
+    margin: 2.6rem 0rem 2.6rem 0rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -700,6 +755,12 @@ header{
     width: 600px;
     height: 750px;
   }
+
+
+  .information-text h3{
+    margin-top: 16rem;
+  }
+  
 }
 
 
@@ -724,6 +785,11 @@ header{
   
   #chronoDisplay {
     font-size: 2.2rem !important;
+  }
+
+  .title-section-cards p{
+    font-size: 1.6rem;
+    margin: 2.6rem 0rem 2.6rem 0rem;
   }
 }
 
