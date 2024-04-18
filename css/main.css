@@ -669,8 +669,70 @@ header{
 
 /* Contact and localization */
 
+.contact-and-localization{
+  display: flex;
+  padding: 5rem;
+
+  gap: 2rem;
+}
+
+.contact-card{
+  width: 50%;
+  height: auto;
+  text-align: center;
+}
+
+.contact-card h3{
+  font-size: 2.4rem;
+}
+
+.contact-card h4{
+  font-size: 2rem;
+}
 
 
+.contact-card{
+  background-color: white;  
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+
+
+
+
+.contact-card button {
+  font-size: 3.4rem;
+  border: none;
+  color: #fff;
+  background-color: rgb(7, 192, 7);
+  border-radius: 10px;
+  width: 32rem;
+  height: 8rem;
+  font-weight: 600;
+  padding: 1rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+
+
+.contact-card button:hover{
+  background-color: rgb(7, 172, 7);
+}
+
+
+
+.localization-card{
+background-color: white;
+width: 50%;
+height: auto;
+text-align: center;
+
+}
 
 
 
