@@ -21,6 +21,8 @@ html{
 body {
   font-family: 'Poppins', sans-serif; 
   background-color: var(--cor-bg-box);
+
+ 
 }
 
 
@@ -591,7 +593,7 @@ header{
 .services-cards{
   display: flex;
   flex-direction: column;
-  margin: 0rem 15rem 0rem 25rem ;
+  margin: 0rem 15rem 5rem 25rem ;
   gap: 3rem;
 }
 
@@ -606,17 +608,14 @@ header{
 }
 
 
-.text-card:hover{
-  background-color: white;
-  color: blue;
-}
+
 
 .text-card h2{
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .text-card p{
-  font-size: 2.4rem;
+  font-size: 2.2rem;
 }
 
 
@@ -627,6 +626,7 @@ header{
 .section-about-us {
   display: flex;
   flex-direction: column;
+  
 }
 
 .title-section-about-us{
@@ -662,7 +662,7 @@ header{
 } 
 
 .contente-text-about-us p{
-  font-size: 1.8rem;
+  font-size: 2.2rem;
 }
 
 
@@ -672,32 +672,27 @@ header{
 .contact-and-localization{
   display: flex;
   padding: 5rem;
-
-  gap: 2rem;
-}
-
-.contact-card{
-  width: 50%;
-  height: auto;
-  text-align: center;
 }
 
 .contact-card h3{
-  font-size: 2.4rem;
+  margin-top: 5rem;
+  font-size: 4rem;
 }
 
-.contact-card h4{
-  font-size: 2rem;
+.contact-card p{ 
+  margin-top: 6rem;
+  font-size: 2.6rem;
 }
 
 
 .contact-card{
-  background-color: white;  
-  border-radius: 20px;
-
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  width: 45%;
+  height: 500px;
+  text-align: center;
+  background-color: white;  
+  border-radius: 20px;
 }
 
 
@@ -705,34 +700,41 @@ header{
 
 
 .contact-card button {
-  font-size: 3.4rem;
+  font-size: clamp(2.6rem, 3vw, 3.4rem); 
   border: none;
   color: #fff;
   background-color: rgb(7, 192, 7);
   border-radius: 10px;
-  width: 32rem;
-  height: 8rem;
+  width: 50%; 
+  max-width: 32rem; 
+  height: 8vw; 
+  max-height: 8rem; 
   font-weight: 600;
   padding: 1rem;
   cursor: pointer;
   transition: color 0.3s;
+  margin-top: 4rem;
 }
-
 
 
 .contact-card button:hover{
   background-color: rgb(7, 172, 7);
 }
 
-
+.title__localization p{
+  font-size: 2.4rem;
+  padding: 1rem;
+}
 
 .localization-card{
 background-color: white;
-width: 50%;
-height: auto;
+width: 45%;
+height: 500px;
 text-align: center;
-
+border-radius: 10px;
 }
+
+
 
 
 
@@ -790,6 +792,21 @@ text-align: center;
     width: 60%;
   }
 
+  .content-about-us{
+    flex-direction: column;
+  }
+  
+  .contente-text-about-us{
+    width: auto;
+  }
+
+  .title-services-section p{
+    margin: 2rem;
+  }
+
+  .services-cards{
+    margin: auto;
+  }
 
 }
 
@@ -853,6 +870,25 @@ text-align: center;
     font-size: 2.2rem;
     margin: 2.6rem 0rem 2.6rem 0rem;
   }
+
+  .contact-and-localization{
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+  }
+
+  .contact-card{
+    width: 100%;
+  }
+
+  .localization-card{
+    width: 100%;
+  }
+
+ 
+
+
+
 }
 
 @media (max-width: 768px) {
@@ -875,6 +911,7 @@ text-align: center;
     margin-top: 16rem;
   }
   
+
 }
 
 
