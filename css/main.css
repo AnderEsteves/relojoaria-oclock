@@ -21,8 +21,6 @@ html{
 body {
   font-family: 'Poppins', sans-serif; 
   background-color: var(--cor-bg-box);
-
- 
 }
 
 
@@ -40,7 +38,7 @@ body {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
 }
 
 .center {
@@ -52,7 +50,7 @@ body {
 
   justify-content: space-around;
 
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
 }
 
 .menuClock {
@@ -481,6 +479,11 @@ header{
   list-style: none;
 }
 
+.nav-list-footer ul{
+  list-style: none;
+}
+
+
 
 .nav-item{
   margin: 0 15px;
@@ -735,6 +738,96 @@ border-radius: 10px;
 }
 
 
+/* footer */
+
+footer{
+  background: blue;
+  box-shadow: 0px 1px 10px;
+  margin-top: 2rem;
+  padding: 2rem 0 2rem 0;
+}
+
+.footer-logo h1{
+ color: white;
+}
+
+
+.section-footer{
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+
+  margin: 2rem 0 2rem 0;
+}
+
+.footer-menu{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-menu h1{
+  font-size: 2.4rem;
+  margin: 1rem 0 1rem 0;
+  color: white;
+}
+
+
+.nav-list-footer li{
+  margin-bottom: 10px;
+}
+
+.nav-link-footer{
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.footer-address{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.footer-address-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-address-content h1{
+  font-size: 2.4rem;
+  color: white;
+}
+
+.footer-address-content p{
+  font-size: 2.2rem;
+  color: white;
+  text-align: center;
+}
+
+
+.footer-logo, .footer-menu, .footer-address{
+
+  height: 26rem;
+  width: 100rem;
+}
+
+.footer-deep{
+  border-top: 1px solid white;
+  margin-top: 1rem ;
+}
+
+.footer-deep p{
+  color: white;
+  font-size: 2rem;
+  margin: 2rem 0 2rem 0;
+
+}
 
 
 
