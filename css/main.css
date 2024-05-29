@@ -38,7 +38,7 @@ body {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 
-  /* border: 1px solid purple; */
+  border: 1px solid purple;
 }
 
 .center {
@@ -50,7 +50,7 @@ body {
 
   justify-content: space-around;
 
-  /* border: 1px solid orange; */
+  border: 1px solid orange;
 }
 
 .menuClock {
@@ -190,9 +190,9 @@ body {
 }
 
 .information-text h3{
-  width: 400px;
+  width: 600px;
   margin-top: 26rem;
-  border-top: 1px solid #0D0DFF;
+  border-top: 2px solid #0D0DFF;
 }
 
 .information-text p{
@@ -517,13 +517,11 @@ header{
 
 
 .cards-container{
-  width: 80%;
+  width: 94%;
   display: flex;
   justify-content: space-around;
   margin: 0px auto;
   flex-wrap: wrap;
-
-  
 }
 
 .card{
@@ -577,7 +575,7 @@ header{
 
 .section-services{
   display: flex;
-  flex-direction: column;
+  flex-direction: column  ;
   align-items: center;
   background-color: white;
 }
@@ -586,7 +584,7 @@ header{
   font-size: 3rem;
  
   text-align: center;
-  margin: 2.6rem 35rem 2.6rem 35rem;
+  margin: 2.6rem 20rem 2.6rem 20rem;
 }
 
 .title-services-section{
@@ -595,9 +593,14 @@ header{
 
 .services-cards{
   display: flex;
-  flex-direction: column;
-  margin: 0rem 15rem 5rem 25rem ;
+  text-align: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0rem 0rem 5rem 0rem ;
   gap: 3rem;
+  max-width: 1536px;
+
+  border: 1px solid red;
 }
 
 .text-card{
@@ -608,9 +611,9 @@ header{
   padding: 2rem;
   border-radius: 20px;
   transition: color 0.3s;
+  align-items: center;
+  flex-basis: calc(33.33% - 2rem);
 }
-
-
 
 
 .text-card h2{
@@ -677,6 +680,19 @@ header{
   padding: 5rem;
 }
 
+.contact-card{
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 500px;
+  text-align: center;
+  background-color: white;  
+  border-radius: 20px;
+
+  justify-content: center;
+  align-items: center;
+}
+
 .contact-card h3{
   margin-top: 5rem;
   font-size: 4rem;
@@ -688,21 +704,8 @@ header{
 }
 
 
-.contact-card{
-  display: flex;
-  flex-direction: column;
-  width: 45%;
-  height: 500px;
-  text-align: center;
-  background-color: white;  
-  border-radius: 20px;
-}
 
-
-
-
-
-.contact-card button {
+button {
   font-size: clamp(2.6rem, 3vw, 3.4rem); 
   border: none;
   color: #fff;
@@ -754,10 +757,9 @@ footer{
 
 .section-footer{
   display: flex;
-  justify-content: space-around;
-  gap: 1rem;
-
-  margin: 2rem 0 2rem 0;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid red;
 }
 
 .footer-menu{
@@ -837,7 +839,7 @@ footer{
   }
 
   .center {
-    gap:4rem
+    gap:2rem
   }
 
   #date {
@@ -847,6 +849,15 @@ footer{
   #chronoDisplay {
     font-size: 2.6rem !important;
   }
+
+  .cards-container{
+    width: 100%;
+  }
+
+  .services-cards{
+    max-width: 1280px;
+  }
+  
   
 }
 
@@ -874,11 +885,13 @@ footer{
     padding: 2.5rem 8rem;
   }
 
+
   .cards-container{
-    flex-direction: column;
-    gap: 4rem;
-    justify-content: center;
-    align-items: center;
+    width: 66%;
+  } 
+  
+  .card {
+    flex: 0 0 calc(50% - 30px); 
   }
 
   .card{
@@ -893,13 +906,28 @@ footer{
     width: auto;
   }
 
+
   .title-services-section p{
-    margin: 2rem;
+    font-size: 2.8rem;
+    margin: 2.6rem 5rem 2rem 5rem;
   }
 
   .services-cards{
-    margin: auto;
+    max-width: 1024px;
+
   }
+
+  
+
+  .contact-card h3{
+    margin-top: 5rem;
+    font-size: 3.6rem;
+  }
+  
+  .contact-card p{ 
+    font-size: 2.8rem;
+  }
+
 
 }
 
@@ -960,9 +988,10 @@ footer{
   }
 
   .title-section-cards p{
-    font-size: 2.2rem;
-    margin: 2.6rem 0rem 2.6rem 0rem;
+    font-size: 2.6rem;
   }
+
+
 
   .contact-and-localization{
     display: flex;
@@ -978,8 +1007,28 @@ footer{
     width: 100%;
   }
 
- 
 
+  .cards-container{
+    width: 86%;
+  } 
+  
+  .content h2{
+    font-size: 1.8rem;
+  }
+
+  .services-cards{
+    max-width: 768px;
+    justify-content: center;
+   
+  }
+
+  .text-card{
+    flex-basis: calc(50% - 1.5rem);
+  }
+
+  .contact-card h3{
+    margin: 5rem 2rem 0rem 2rem;
+  }
 
 
 }
@@ -1004,6 +1053,34 @@ footer{
     margin-top: 16rem;
   }
   
+  .cards-container{
+    width: 100%;
+  } 
+  
+  .content h2{
+    font-size: 1.8rem;
+  }
+
+  .services-cards{
+    max-width: 640px;
+  }
+
+  .text-card{
+    flex-basis: calc(90% );
+  }
+
+  .title-services-section p{
+    font-size: 2.8rem;
+    margin: 2.6rem 5rem 2rem 5rem;
+  }
+
+  .title-section-cards p{
+    font-size: 2.6rem;
+    margin: 2.6rem 3.6rem 2.6rem 3.6rem;
+  }
+
+
+
 
 }
 
@@ -1032,9 +1109,41 @@ footer{
   }
 
   .title-section-cards p{
-    font-size: 1.6rem;
+    font-size: 2.6rem;
     margin: 2.6rem 0rem 2.6rem 0rem;
   }
+
+  .content h2{
+    font-size: 1.6rem;
+  }
+
+  .services-cards{
+    max-width: 475px;
+  }
+
+ 
+  .contact-card h3{
+    margin: 1rem 2rem 0rem 2rem;
+    font-size: 3rem;
+  }
+
+  button {
+    font-size: clamp(2.6rem, 3vw, 3.4rem); 
+    border: none;
+    color: #fff;
+    background-color: rgb(7, 192, 7);
+    border-radius: 10px;
+    width: 50%; 
+    max-width: 32rem; 
+    height: 10vw; 
+    max-height: 8rem; 
+    font-weight: 600;
+    padding: 1rem;
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-top: 4rem;
+  }
+  
 }
 
 @media (max-width: 475px) {
@@ -1072,10 +1181,7 @@ footer{
     display: flex;
     flex-direction: column;
     justify-content:center;
-
     align-items: center;
-
-    
   }
   
   .menuCronometro {
@@ -1087,9 +1193,6 @@ footer{
     width: 100%;
     top: 10%;
     position: relative;
-
-    
-    
   }
 
   #date {
@@ -1100,6 +1203,40 @@ footer{
     font-size: 1.4rem !important;
   }
 
+  .services-cards{
+    max-width: 375px;
+  }
+
+  .cards-container{
+    width: 66%;
+  } 
+  
+  .card {
+    flex: 0 0 calc(100%); 
+  }
+
+  .card{
+    width: 60%;
+  }
+
+  .information-text h1{
+    font-size: 2.8rem;
+    padding: 2rem 2rem 0rem 2rem;
+    line-height: 4rem;
+  }
+
+  .information-text h3{
+    width: 200px;
+  }
+
+  button {
+    width: 70%; 
+    height: 10vw; 
+  }
+
+  iframe{
+    height: 400px;
+  }
 
 }
 
