@@ -38,7 +38,7 @@ body {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
 }
 
 .center {
@@ -50,7 +50,7 @@ body {
 
   justify-content: space-around;
 
-  border: 1px solid orange;
+  /* border: 1px solid orange; */
 }
 
 .menuClock {
@@ -180,6 +180,8 @@ body {
   padding: 6rem 2rem 0rem 2rem;
   font-weight: 600;
   line-height: 6rem;
+  text-align: center;
+  line-height: 8rem;
 }
 
 .information-text h2{
@@ -599,8 +601,6 @@ header{
   margin: 0rem 0rem 5rem 0rem ;
   gap: 3rem;
   max-width: 1536px;
-
-  border: 1px solid red;
 }
 
 .text-card{
@@ -750,17 +750,25 @@ footer{
   padding: 2rem 0 2rem 0;
 }
 
-.footer-logo h1{
- color: white;
-}
-
-
-.section-footer{
+.footer-logo{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  border: 1px solid red;
 }
+
+.footer-logo h1{
+ color: white;
+ font-size: 5rem;
+}
+
+.footer-logo p{
+color: white;
+font-size: 2rem;
+}
+
+
 
 .footer-menu{
   display: flex;
@@ -785,6 +793,11 @@ footer{
   text-decoration: none;
   display: flex;
   justify-content: center;
+  transition: color 0.3s;
+}
+
+.nav-link-footer:hover{
+  color: var(--cor-button-transition);
 }
 
 
@@ -813,12 +826,6 @@ footer{
 }
 
 
-.footer-logo, .footer-menu, .footer-address{
-
-  height: 26rem;
-  width: 100rem;
-}
-
 .footer-deep{
   border-top: 1px solid white;
   margin-top: 1rem ;
@@ -828,7 +835,7 @@ footer{
   color: white;
   font-size: 2rem;
   margin: 2rem 0 2rem 0;
-
+  text-align: center;
 }
 
 
@@ -1030,6 +1037,28 @@ footer{
     margin: 5rem 2rem 0rem 2rem;
   }
 
+  .footer-logo, .footer-menu, .footer-address{
+    padding-bottom: 3rem;
+  }
+
+  .section-footer{
+    display: flex;
+    flex-direction: column;
+    text-align: center
+  }
+
+  .nav-list-footer ul li {
+    display: block; 
+  }
+
+  .footer-deep{
+    flex-direction: column;
+    
+  }
+
+  .footer-deep p{
+    margin: 0;
+  }
 
 }
 
@@ -1143,6 +1172,11 @@ footer{
     transition: color 0.3s;
     margin-top: 4rem;
   }
+
+  .footer-logo h1{
+    font-size: 4rem;
+  }
+
   
 }
 
@@ -1238,6 +1272,12 @@ footer{
     height: 400px;
   }
 
+  .footer-logo h1{
+    font-size: 3.6rem;
+  }
+
+
+ 
 }
 
 
